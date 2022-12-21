@@ -1,0 +1,24 @@
+{
+  "name": "sports-keeper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexAllGold/sports-keeper.git"
+  },
+  "keywords": [],
+  "author": "AlexAllGold",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexAllGold/sports-keeper/issues"
+  },
+  "homepage": "https://github.com/AlexAllGold/sports-keeper#readme",
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
