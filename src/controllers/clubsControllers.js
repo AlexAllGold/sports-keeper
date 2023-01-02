@@ -1,10 +1,29 @@
 import {httpCodes} from "../utils/httpCodes.js";
 
-export class ClubsControllers {
-    // crud methods where I can use servicees
+class ClubsControllers {
+    // db = { clubs: [{id: 1},{id: 2},{id: 3} ]}
+    // crud methods where I can use services
     getAll(res) {
         res.statusCode = httpCodes.SUCCESS;
         res.setHeader('Content-Type', 'text/plain');
         res.end('Hello clubs');
     }
+
+    setAll(res) {
+
+    }
+
+    getOne(res, params) {
+        // const club = db.clubs.find(item => item.id === params.clubId);
+        res.statusCode = httpCodes.SUCCESS;
+        res.setHeader('Content-Type', 'application/json');
+        res.end('Get one! ' + params.clubId);
+    }
+
+    update(res) {
+    }
+
+    remove(res) {
+    }
 }
+export const clubsController = new ClubsControllers();
