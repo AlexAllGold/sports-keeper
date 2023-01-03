@@ -1,43 +1,41 @@
-import { routes } from './appRoutes.js'
-import {httpCodes} from "../utils/httpCodes.js";
-
+import { routes } from './appRoutes.js';
+import { httpCodes } from '../utils/httpCodes.js';
 
 export const router = (req, res) => {
-    const params = {};
+  const params = {};
 
-    if (isPath(req.url)) {
+  function glueUrl(url, rout) {
+    const urlPath = url.split('/');
+    const routPath = rout.split('/');
+    let resultPath = '';
+    for (let i = 1; i < urlPath.length; i += 1) {
+      const currentId = routPath[i];
+      resultPath += '/';
+      if (currentId !== undefined && currentId.indexOf(':') !== -1 && urlPath[i] !== '') {
+        params[currentId.slice(1)] = urlPath[i];
+        resultPath += currentId;
+      } else {
+        resultPath += urlPath[i];
+      }
     }
-    else {
-        res.statusCode = httpCodes.NOT_FOUND;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end('Not found');
-    }
-    //
-    function isPath(url) {
-        let flag = false;
-        routes.forEach(rout => {
-            const currentUrl = glueUrl(url, rout.path);
-            if (rout.path === currentUrl) {
-                    rout.methods[req.method](res, params);
-                    flag = true;
-            }
-        })
-        return flag;
-    }
-    function glueUrl(url, rout) {
-        //search id and return glue string
-        const urlPath = url.split('/');
-        const routPath = rout.split('/');
-        let resultPath = '';
-        for(let i = 1; i < urlPath.length; i++) {
-            resultPath += '/';
-                if (routPath[i] === ':clubId' && urlPath[i] !== '') {
-                    params.clubId = urlPath[i];
-                    resultPath += ':clubId';
-                } else {
-                    resultPath += urlPath[i];
-                }
-        }
-        return resultPath;
-    }
+    return resultPath;
+  }
+
+  function isPath(url) {
+    let flag = false;
+    routes.forEach((rout) => {
+      const currentUrl = glueUrl(url, rout.path);
+      if (rout.path === currentUrl) {
+        rout.methods[req.method](res, params);
+        flag = true;
+      }
+    });
+    return flag;
+  }
+
+  if (!isPath(req.url)) {
+    res.statusCode = httpCodes.NOT_FOUND;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Not found');
+  }
 };

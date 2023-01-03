@@ -6,6 +6,5 @@ const port = 8000;
 const server = http.createServer(router);
 
 server.listen(port, host, () => {
-    console.log(`Sever Working http://${host}:${port}/`);
+  console.log(`Sever Working http://${host}:${port}/`);
 });
-
