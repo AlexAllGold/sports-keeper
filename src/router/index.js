@@ -1,10 +1,11 @@
 import { routes } from './appRoutes.js';
 import { httpCodes } from '../utils/httpCodes.js';
+import { controllerWrapper } from '../utils/controllerWrapper';
 
 export const router = (req, res) => {
   const params = {};
 
-  function glueUrl(url, rout) {
+  const glueUrl = ((url, rout) => {
     const urlPath = url.split('/');
     const routPath = rout.split('/');
     let resultPath = '';
@@ -19,9 +20,9 @@ export const router = (req, res) => {
       }
     }
     return resultPath;
-  }
+  });
 
-  function isPath(url) {
+  const isPath = ((url) => {
     let flag = false;
     routes.forEach((rout) => {
       const currentUrl = glueUrl(url, rout.path);
@@ -31,11 +32,10 @@ export const router = (req, res) => {
       }
     });
     return flag;
-  }
+  });
 
   if (!isPath(req.url)) {
-    res.statusCode = httpCodes.NOT_FOUND;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Not found');
+    const message = 'Not found';
+    controllerWrapper(res, httpCodes.NOT_FOUND, message);
   }
 };

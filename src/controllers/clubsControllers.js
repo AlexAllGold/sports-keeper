@@ -1,19 +1,15 @@
 import { httpCodes } from '../utils/httpCodes.js';
+import { controllerWrapper } from '../utils/controllerWrapper';
 
 class ClubsControllers {
-  // db = { clubs: [{id: 1},{id: 2},{id: 3} ]}
-  // crud methods where I can use services
   getAll(res) {
-    res.statusCode = httpCodes.SUCCESS;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello clubs');
+    const message = 'Hello clubs';
+    controllerWrapper(res, httpCodes.SUCCESS, message);
   }
 
   getOne(res, params) {
-    // const club = db.clubs.find(item => item.id === params.clubId);
-    res.statusCode = httpCodes.SUCCESS;
-    res.setHeader('Content-Type', 'application/json');
-    res.end(`Get one! ${params.clubId}`);
+    const message = `Get one! ${params.clubId}`;
+    controllerWrapper(res, httpCodes.SUCCESS, message);
   }
 }
 export const clubsController = new ClubsControllers();

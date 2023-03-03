@@ -1,9 +1,9 @@
 import mysql from 'mysql';
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'alex',
-  password: '3b1o4cn7334721'
+const connection = mysql.createPool({
+  host: process.env.HOST_DB,
+  user: process.env.USER_DB,
+  password: process.env.PASS_DB,
 });
 
 connection.connect();

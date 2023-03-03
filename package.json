@@ -14,19 +14,18 @@
     "lint:format": "prettier --write ."
   },
   "dependencies": {
-    "mongoose": "^6.8.1",
+    "dotenv": "^16.0.3",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.20",
-    "sqlite3": "^5.1.4",
-    "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-standard": "^29.0.0",
-    "stylelint-order": "^5.0.0"
+    "nodemon": "^2.0.20"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.26.0",
+    "husky": "^8.0.3",
     "prettier": "2.8.1"
   },
   "repository": {
