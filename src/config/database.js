@@ -1,9 +1,12 @@
 import mysql from 'mysql';
+import { ConfigService } from './ConfigService.js';
+
+const configService = new ConfigService();
 
 const connection = mysql.createPool({
-  host: process.env.HOST_DB,
-  user: process.env.USER_DB,
-  password: process.env.PASS_DB,
+  host: configService.getDbHost(),
+  user: configService.getDbUser(),
+  password: configService.getDbPass(),
 });
 
 connection.connect();

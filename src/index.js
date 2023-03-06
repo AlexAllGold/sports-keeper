@@ -1,8 +1,11 @@
 import http from 'http';
 import { router } from './router/index.js';
+import { ConfigService } from './config/ConfigService.js';
 
-const host = process.env.LOCALHOST;
-const port = process.env.PORT;
+const configService = new ConfigService();
+
+const host = configService.getDbHost();
+const port = configService.getPort();
 const server = http.createServer(router);
 
 server.listen(port, host, () => {

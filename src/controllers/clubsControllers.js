@@ -1,5 +1,5 @@
 import { httpCodes } from '../utils/httpCodes.js';
-import { controllerWrapper } from '../utils/controllerWrapper';
+import { controllerWrapper } from '../utils/controllerWrapper.js';
 
 class ClubsControllers {
   getAll(res) {
