@@ -23,8 +23,7 @@ export class ConfigService {
   }
 
   #getEnv(nameEnv) {
-    if (nameEnv !== undefined) {
-      console.log(process.env[nameEnv]);
+    if (process.env[nameEnv]) {
       return process.env[nameEnv];
     }
     // return console.error(`Env ${httpCodes.INTERNAL_SERVER_ERROR} is required!`);
