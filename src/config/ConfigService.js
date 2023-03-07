@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { httpCodes } from '../utils/httpCodes.js';
+import { InternalServerException } from '../exceptions/InternalServerException.js';
 
 export class ConfigService {
   getDbUser() {
@@ -26,7 +26,6 @@ export class ConfigService {
     if (process.env[nameEnv]) {
       return process.env[nameEnv];
     }
-    // return console.error(`Env ${httpCodes.INTERNAL_SERVER_ERROR} is required!`);
-    throw httpCodes.INTERNAL_SERVER_ERROR;
+    throw new InternalServerException(nameEnv);
   }
 }

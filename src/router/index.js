@@ -1,6 +1,6 @@
 import { routes } from './appRoutes.js';
 import { httpCodes } from '../utils/httpCodes.js';
-import { controllerWrapper } from '../utils/controllerWrapper.js';
+import { sendResponse } from '../utils/sendResponse.js';
 
 export const router = (req, res) => {
   const params = {};
@@ -36,6 +36,6 @@ export const router = (req, res) => {
 
   if (!isPath(req.url)) {
     const message = 'Not found';
-    controllerWrapper(res, httpCodes.NOT_FOUND, message);
+    sendResponse(res, httpCodes.NOT_FOUND, message);
   }
 };
