@@ -1,8 +1,8 @@
 export class BaseExeptions extends Error {
-  #statusCode;
+  statusCode;
 
   constructor({ message, statusCode }) {
     super(message);
-    this.#statusCode = statusCode;
+    this.statusCode = statusCode;
   }
 }

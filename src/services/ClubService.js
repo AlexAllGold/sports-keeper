@@ -1,12 +1,13 @@
+import { database } from '../config/database.js';
+
 export class ClubService {
-  getAll(pool) {
-    return pool.execute('SELECT * FROM clubs')
-      .then((result) => {
-        console.log(`${result.description}`);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+  getAll() {
+    database.query('"SELECT * FROM users"', (err, results) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(results);
+    });
   }
 }
 export const clubService = new ClubService();
