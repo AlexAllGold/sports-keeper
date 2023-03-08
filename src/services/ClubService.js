@@ -1,16 +1,6 @@
-import mysql from 'mysql';
-
 export class ClubService {
-  #pool;
-
-  constructor(pool) {
-    if (pool instanceof mysql) {
-      this.#pool = pool;
-    }
-  }
-
-  getAll() {
-    this.#pool.execute('SELECT * FROM clubs')
+  getAll(pool) {
+    pool.execute('SELECT * FROM clubs')
       .then((result) => {
         console.log(`${result.description}`);
       })
@@ -19,3 +9,4 @@ export class ClubService {
       });
   }
 }
+export const clubService = new ClubService();

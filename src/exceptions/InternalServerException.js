@@ -1,8 +1,9 @@
-import { BaseError } from './BaseError.js';
+import { BaseExeptions } from './BaseExeptions.js';
+import { httpCodes } from '../utils/httpCodes.js';
 
-export class InternalServerException extends BaseError {
-  constructor(message) {
-    super();
-    console.error(`Env ${message} doesn't exist`);
+export class InternalServerException extends BaseExeptions {
+  constructor() {
+    super('Env does not exist', httpCodes.INTERNAL_SERVER_ERROR);
+    this.name = 'InternalServerException';
   }
 }

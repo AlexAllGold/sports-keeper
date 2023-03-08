@@ -1,9 +1,9 @@
 {
   "author": "AlexAllGold",
-  "license": "ISC",
+  "license": "MIT",
   "name": "sports-keeper",
   "version": "1.0.0",
-  "description": "",
+  "description": "application for client sports-keeper",
   "main": "index.js",
   "type": "module",
   "homepage": "https://github.com/AlexAllGold/sports-keeper#readme",

@@ -1,8 +1,6 @@
 import http from 'http';
 import { router } from './router/index.js';
-import { ConfigService } from './config/ConfigService.js';
-
-const configService = new ConfigService();
+import { configService } from './config/configService.js';
 
 const host = configService.getDbHost();
 const port = configService.getPort();

@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { InternalServerException } from '../exceptions/InternalServerException.js';
 
-export class ConfigService {
+class ConfigService {
   getDbUser() {
     return this.#getEnv('USER_DB');
   }
@@ -26,6 +26,7 @@ export class ConfigService {
     if (process.env[nameEnv]) {
       return process.env[nameEnv];
     }
-    throw new InternalServerException(nameEnv);
+    throw new InternalServerException();
   }
 }
+export const configService = new ConfigService();
