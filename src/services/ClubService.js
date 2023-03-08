@@ -1,6 +1,6 @@
 export class ClubService {
   getAll(pool) {
-    pool.execute('SELECT * FROM clubs')
+    return pool.execute('SELECT * FROM clubs')
       .then((result) => {
         console.log(`${result.description}`);
       })

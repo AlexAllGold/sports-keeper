@@ -1,16 +1,16 @@
 import mysql from 'mysql';
 import { configService } from './ConfigService.js';
-import { clubService } from '../services/ClubService.js';
 
 class Database {
+  getDb() {
+    const dbConfig = {
+      connectionLimit: 10,
+      host: configService.getDbHost(),
+      user: configService.getDbUser(),
+      password: configService.getDbPass(),
+    };
 
-pool = mysql.createPool({
-  connectionLimit: 10,
-  host: configService.getDbHost(),
-  user: configService.getDbUser(),
-  password: configService.getDbPass(),
-}).promise();
-
-  clubService.getAll(pool);
+    return mysql.createPool(dbConfig);
+  }
 }
-export const database = new Database();
+export const database = new Database().getDb();
