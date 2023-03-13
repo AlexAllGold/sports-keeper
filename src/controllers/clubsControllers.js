@@ -1,10 +1,10 @@
 import { httpCodes } from '../utils/httpCodes.js';
 import { sendResponse } from '../utils/sendResponse.js';
-import { clubsService } from '../services/ClubService.js';
+import { clubService } from '../services/ClubService.js';
 
 class ClubsControllers {
   async getAll(res) {
-    const clubs = await clubsService.getAll();
+    const clubs = await clubService.getAll();
     sendResponse(res, httpCodes.SUCCESS, clubs);
   }
 

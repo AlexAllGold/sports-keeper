@@ -1,5 +1,5 @@
 import { BaseExeptions } from './BaseExeptions.js';
-import { httpCodes } from '../utils/httpCodes.js';
+import { httpCodes } from '../httpCodes.js';
 
 export class InternalServerException extends BaseExeptions {
   constructor() {

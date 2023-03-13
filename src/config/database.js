@@ -1,5 +1,5 @@
 import mysql from 'mysql';
-import { configService } from './ConfigService.js';
+import { configService } from './configService.js';
 
 class Database {
   getDb() {

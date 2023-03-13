@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { InternalServerException } from '../exceptions/InternalServerException.js';
+import { InternalServerException } from '../utils/exceptions/InternalServerException.js';
 
 class ConfigService {
   getDbUser() {
