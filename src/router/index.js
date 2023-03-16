@@ -9,16 +9,16 @@ export const router = (req, res) => {
     const urlPath = url.split('/');
     const routPath = rout.split('/');
     let resultPath = '';
-    for (let i = 1; i < urlPath.length; i += 1) {
-      const currentId = routPath[i];
+    urlPath.forEach((pathUrl) => {
+      const currentId = routPath[pathUrl];
       resultPath += '/';
-      if (currentId !== undefined && currentId.indexOf(':') !== -1 && urlPath[i] !== '') {
-        params[currentId.slice(1)] = urlPath[i];
+      if (currentId !== undefined && currentId.indexOf(':') !== -1 && pathUrl !== '') {
+        params[currentId.slice(1)] = pathUrl;
         resultPath += currentId;
       } else {
-        resultPath += urlPath[i];
+        resultPath += pathUrl;
       }
-    }
+    });
     return resultPath;
   });
 

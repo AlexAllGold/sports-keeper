@@ -5,7 +5,7 @@ import { clubService } from '../services/ClubService.js';
 class ClubsControllers {
   async getAll(res) {
     const clubs = await clubService.getAll();
-    sendResponse(res, httpCodes.SUCCESS, clubs);
+    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(clubs));
   }
 
   getOne(res, params) {
