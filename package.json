@@ -11,7 +11,8 @@
     "start": "nodemon src/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "lint:format": "prettier --write ."
+    "lint:format": "prettier --write .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
