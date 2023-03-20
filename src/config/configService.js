@@ -7,7 +7,7 @@ class ConfigService {
   }
 
   getDbPass() {
-    return this.#getEnv('PORT');
+    return this.#getEnv('PASS_DB');
   }
 
   getDbHost() {

@@ -10,7 +10,8 @@ class Database {
       password: configService.getDbPass(),
     };
 
-    return mysql.createPool(dbConfig);
+    const db = mysql.createPool(dbConfig);
+    return db;
   }
 }
 export const database = new Database().getDb();

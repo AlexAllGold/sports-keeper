@@ -5,24 +5,24 @@ import { sendResponse } from '../utils/sendResponse.js';
 export const router = (req, res) => {
   const params = {};
 
-  const glueUrl = ((url, rout) => {
+  const glueUrl = (url, rout) => {
     const urlPath = url.split('/');
     const routPath = rout.split('/');
     let resultPath = '';
-    urlPath.forEach((pathUrl) => {
-      const currentId = routPath[pathUrl];
+    for (let i = 1; i < urlPath.length; i += 1) {
+      const currentId = routPath[i];
       resultPath += '/';
-      if (currentId !== undefined && currentId.indexOf(':') !== -1 && pathUrl !== '') {
-        params[currentId.slice(1)] = pathUrl;
+      if (currentId !== undefined && currentId.indexOf(':') !== -1 && urlPath[i] !== '') {
+        params[currentId.slice(1)] = urlPath[i];
         resultPath += currentId;
       } else {
-        resultPath += pathUrl;
+        resultPath += urlPath[i];
       }
-    });
+    }
     return resultPath;
-  });
+  };
 
-  const isPath = ((url) => {
+  const isPath = (url) => {
     let flag = false;
     routes.forEach((rout) => {
       const currentUrl = glueUrl(url, rout.path);
@@ -32,10 +32,10 @@ export const router = (req, res) => {
       }
     });
     return flag;
-  });
+  };
 
   if (!isPath(req.url)) {
-    const message = 'Not found';
+    const message = 'Not found!!!';
     sendResponse(res, httpCodes.NOT_FOUND, message);
   }
 };
