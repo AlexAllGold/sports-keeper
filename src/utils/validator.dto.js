@@ -7,16 +7,15 @@ export class ValidatorDto {
   }
 
   isNumber(number) {
-    if (!Number.isNaN(Number(number))) {
+    if (number instanceof Number) {
       return number;
     }
     throw new Error('Not a number');
   }
 
   isDate(dateOfBirth) {
-    const date = new Date(dateOfBirth.split('-'));
-    if (!Number.isNaN(date)) {
-      return new Date(date);
+    if (dateOfBirth instanceof Date) {
+      return dateOfBirth;
     }
     throw new Error('Invalid of date of birth');
   }
