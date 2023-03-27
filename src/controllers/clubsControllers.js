@@ -6,31 +6,20 @@ import { ClientDto } from '../dtos/сlient.dto.js';
 
 class ClubsControllers {
   async getAll(res) {
-    try {
-      const clubs = await clubService.getAll();
-      sendResponse(res, httpCodes.SUCCESS, JSON.stringify(clubs));
-    } catch (err) {
-      throw new Error(`Error in getAll(): ${err.message}`);
-    }
+    const clubs = await clubService.getAll();
+    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(clubs));
   }
 
   async getOne(res, params) {
-    try {
-      const message = `Get one! ${params.clubId}`;
-      sendResponse(res, httpCodes.SUCCESS, message);
-    } catch (err) {
-      throw new Error(`Error in getOne(): ${err.message}`);
-    }
+    const message = `Get one! ${params.clubId}`;
+    sendResponse(res, httpCodes.SUCCESS, message);
   }
 
   async createClient(req, res) {
-    try {
-      const body = bodyParser.parser(req);
-      const client = new ClientDto(body);
-      sendResponse(res, httpCodes.SUCCESS, `Client registered! ${client}`);
-    } catch (err) {
-      throw new Error(`Error in createClient(): ${err.message}`);
-    }
+    const body = bodyParser.parser(req);
+    const client = new ClientDto(body);
+    sendResponse(res, httpCodes.SUCCESS, `Client registered! ${client}`);
   }
 }
+
 export const clubsController = new ClubsControllers();
