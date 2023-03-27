@@ -35,7 +35,7 @@ export const router = (req, res) => {
   };
 
   if (!isPath(req.url)) {
-    const message = 'Not found!!!';
+    const message = 'Not found';
     sendResponse(res, httpCodes.NOT_FOUND, message);
   }
 };
