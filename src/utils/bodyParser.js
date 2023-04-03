@@ -3,7 +3,7 @@ class BodyParser {
     let body = [];
     return new Promise((resolve, reject) => {
       request
-        .on('error', (error) => {
+        .on('data', 'error', (data, error) => {
           reject(error);
         })
         .on('end', () => {

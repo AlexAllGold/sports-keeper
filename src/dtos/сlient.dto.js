@@ -1,6 +1,6 @@
-import { ValidatorDto } from '../utils/validator.dto.js';
+import { Validator } from '../utils/validator.js';
 
-export class ClientDto extends ValidatorDto {
+export class ClientDto extends Validator {
   clubId;
 
   firstName;
@@ -14,8 +14,8 @@ export class ClientDto extends ValidatorDto {
   constructor(client) {
     super();
     this.clubId = this.isNumber(client.clubId);
-    this.firstName = this.isName(client.firstName);
-    this.lastName = this.isName(client.lastName);
+    this.firstName = this.isString(client.firstName);
+    this.lastName = this.isString(client.lastName);
     this.dateOfBirth = this.isDate(client.dateOfBirth);
     this.email = this.isEmail(client.email);
   }

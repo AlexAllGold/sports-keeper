@@ -10,7 +10,7 @@ class ClubsControllers {
     sendResponse(res, httpCodes.SUCCESS, JSON.stringify(clubs));
   }
 
-  async getOne(res, params) {
+  getOne(res, params) {
     const message = `Get one! ${params.clubId}`;
     sendResponse(res, httpCodes.SUCCESS, message);
   }
