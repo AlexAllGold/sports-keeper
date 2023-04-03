@@ -1,20 +1,20 @@
 export class ValidatorDto {
   isName(name) {
-    if (this.#isMin(name) && this.#isMax(name)) {
+    if (/^[a-zA-Zа-яА-ЯёЁ]{4,50}$/.test(name)) {
       return name;
     }
     throw new Error('Invalid first name or last name');
   }
 
   isNumber(number) {
-    if (number instanceof Number) {
+    if (/^[0-9]{1,10}$/.test(number)) {
       return number;
     }
     throw new Error('Not a number');
   }
 
   isDate(dateOfBirth) {
-    if (dateOfBirth instanceof Date) {
+    if (/^\d{2}[./-]\d{2}[./-]\d{4}$/.test(dateOfBirth)) {
       return dateOfBirth;
     }
     throw new Error('Invalid of date of birth');
@@ -25,19 +25,5 @@ export class ValidatorDto {
       return email;
     }
     throw new Error('Invalid email address');
-  }
-
-  #isMin(min) {
-    if (min.length >= 4) {
-      return true;
-    }
-    throw new Error('Invalid min value');
-  }
-
-  #isMax(max) {
-    if (max.length <= 50) {
-      return true;
-    }
-    throw new Error('Invalid maximum value');
   }
 }
