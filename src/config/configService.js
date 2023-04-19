@@ -10,8 +10,8 @@ class ConfigService {
     return this.#getEnv('PASS_DB');
   }
 
-  getDbHost() {
-    return this.#getEnv('HOST_DB');
+  getDbPort() {
+    return this.#getEnv('PORT_DB');
   }
 
   getHost() {

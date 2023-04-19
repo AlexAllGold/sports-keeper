@@ -14,7 +14,7 @@ export class Validator {
   }
 
   isDate(dateOfBirth) {
-    if (/^\d{2}[./-]\d{2}[./-]\d{4}$/.test(dateOfBirth)) {
+    if (/\d{2}-\d{2}-\d{4}$/.test(dateOfBirth)) {
       return dateOfBirth;
     }
     throw new Error('Invalid of date of birth');

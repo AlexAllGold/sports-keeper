@@ -4,10 +4,12 @@ import { configService } from './configService.js';
 class Database {
   getDb() {
     const dbConfig = {
-      connectionLimit: 10,
-      host: configService.getDbHost(),
+      host: configService.getHost(),
+      port: configService.getDbPort(),
       user: configService.getDbUser(),
       password: configService.getDbPass(),
+      database: 'sports',
+      connectionLimit: 10,
     };
 
     const db = mysql.createPool(dbConfig);

@@ -13,7 +13,6 @@ export class ClientDto extends Validator {
 
   constructor(client) {
     super();
-    this.clubId = this.isNumber(client.clubId);
     this.firstName = this.isString(client.firstName);
     this.lastName = this.isString(client.lastName);
     this.dateOfBirth = this.isDate(client.dateOfBirth);

@@ -3,22 +3,38 @@ import { sendResponse } from '../utils/sendResponse.js';
 import { clubService } from '../services/clubService.js';
 import { bodyParser } from '../utils/bodyParser.js';
 import { ClientDto } from '../dtos/сlient.dto.js';
+import { InternalServerException } from '../utils/exceptions/InternalServerException.js';
 
 class ClubsControllers {
   async getAll(res) {
-    const clubs = await clubService.getAll();
-    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(clubs));
+    try {
+      // const message = 'Get All!';
+      const clubs = await clubService.getAll();
+      sendResponse(res, httpCodes.SUCCESS, JSON.stringify(clubs));
+      // sendResponse(res, httpCodes.SUCCESS, message);
+    } catch (err) {
+      throw new InternalServerException(err);
+    }
   }
 
-  getOne(res, params) {
-    const message = `Get one! ${params.clubId}`;
-    sendResponse(res, httpCodes.SUCCESS, message);
+  async getOne(res, req, params) {
+    try {
+      const message = `Get one! ${params.clubId}`;
+      // const message = await clubService.getOne(params.clubId);
+      sendResponse(res, httpCodes.SUCCESS, message);
+    } catch (err) {
+      throw new InternalServerException(err);
+    }
   }
 
-  async createClient(req, res) {
-    const body = bodyParser.parser(req);
-    const client = new ClientDto(body);
-    sendResponse(res, httpCodes.SUCCESS, `Client registered! ${client}`);
+  async createClient(res, req) {
+    try {
+      const body = await bodyParser.parseBody(req);
+      const client = new ClientDto(body);
+      sendResponse(res, httpCodes.SUCCESS, `Client registered! ${client}`);
+    } catch (err) {
+      throw new InternalServerException(err);
+    }
   }
 }
 

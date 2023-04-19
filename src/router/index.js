@@ -1,10 +1,9 @@
 import { routes } from './appRoutes.js';
-import { httpCodes } from '../utils/httpCodes.js';
 import { sendResponse } from '../utils/sendResponse.js';
+import { httpCodes } from '../utils/httpCodes.js';
 
 export const router = (req, res) => {
   const params = {};
-
   const glueUrl = (url, rout) => {
     const urlPath = url.split('/');
     const routPath = rout.split('/');
@@ -22,20 +21,19 @@ export const router = (req, res) => {
     return resultPath;
   };
 
-  const isPath = (url) => {
+  const startRout = (url) => {
     let flag = false;
-    routes.forEach((rout) => {
-      const currentUrl = glueUrl(url, rout.path);
+    const currentUrl = glueUrl(url, routes[routes.length - 1].path);
+    routes.forEach(async (rout) => {
       if (rout.path === currentUrl) {
-        rout.methods[req.method](res, params);
         flag = true;
+        await rout.methods[req.method](res, req, params);
       }
     });
-    return flag;
+    if (!flag) {
+      sendResponse(res, httpCodes.NOT_FOUND, 'NotFound');
+    }
   };
 
-  if (!isPath(req.url)) {
-    const message = 'Not found';
-    sendResponse(res, httpCodes.NOT_FOUND, message);
-  }
+  startRout(req.url);
 };
