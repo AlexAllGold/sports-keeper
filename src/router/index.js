@@ -5,7 +5,7 @@ import { NotFoundException } from '../utils/exceptions/NotFoundException.js';
 
 export const router = (req, res) => {
   const params = {};
-  const glueUrl = (url, rout) => {
+  const findRouter = (url, rout) => {
     const urlPath = url.split('/');
     const routPath = rout.split('/');
     let resultPath = '';
@@ -22,49 +22,20 @@ export const router = (req, res) => {
     return resultPath;
   };
 
-  const getController = async (url) => {
-    let flag = false;
-    const currentUrl = glueUrl(url, routes[routes.length - 1].path);
-    routes.forEach((route) => {
-      if (route.path === currentUrl) {
-        route.methods[req.method](res, req, params);
-        flag = true;
-      }
-    });
-    return flag;
+  const getController = (url) => {
+    const currentUrl = findRouter(url, routes[routes.length - 1].path);
+    return routes.filter((route) => route.path === currentUrl);
   };
 
   const startRout = async (url) => {
-    try {
-      const foundRoute = await getController(url);
-      if (!foundRoute) {
-        throw new NotFoundException('No route found');
-      }
-    } catch (err) {
-      sendResponse(res, httpCodes.INTERNAL_SERVER_ERROR, 'Something went wrong');
+    const foundRoute = getController(url);
+    if (foundRoute.length === 0) {
+      throw new NotFoundException('Not found route');
     }
+    await foundRoute.at(0).methods[req.method](res, req, params);
   };
 
-  startRout(req.url);
+  startRout(req.url).catch((err) => {
+    sendResponse(res, err.statusCode || httpCodes.INTERNAL_SERVER_ERROR, err.message);
+  });
 };
-// const startRout = (url) => {
-//   let flag = false;
-//   const currentUrl = glueUrl(url, routes[routes.length - 1].path);
-//   routes.forEach(async (rout) => {
-//     if (rout.path === currentUrl) {
-//       flag = true;
-//       await rout.methods[req.method](res, req, params);
-//     }
-//   });
-//   if (!flag) {
-//     sendResponse(res, httpCodes.NOT_FOUND, 'NotFound');
-//   }
-// };
-// try {
-//   const foundController = getController(req);
-//   if (!foundController) {
-//     throw new NotFoundException(“Url ${req.url} not found”);
-//     await foundController(req, res);
-//   } catch(err) {
-//     sendResponse(res, HttpCode.INTERNAL_SERVER_ERROR, “Something went wrong”);
-//   }
