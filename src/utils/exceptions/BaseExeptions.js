@@ -1,9 +1,9 @@
-export class BaseExeptions extends Error {
+export class BaseExceptions extends Error {
   statusCode;
 
   constructor(message, statusCode) {
     super(message);
     this.statusCode = statusCode;
-    this.name = 'BaseExeptions';
+    this.name = 'BaseExceptions';
   }
 }
