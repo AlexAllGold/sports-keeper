@@ -1,4 +1,4 @@
-import mysql from 'mysql';
+import mysql from 'mysql2';
 import { configService } from './configService.js';
 
 class Database {
@@ -11,9 +11,8 @@ class Database {
       database: 'sports',
       connectionLimit: 10,
     };
-
-    const db = mysql.createPool(dbConfig);
-    return db;
+    return mysql.createPool(dbConfig);
   }
 }
+
 export const database = new Database().getDb();

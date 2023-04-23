@@ -14,14 +14,14 @@ export class Validator {
   }
 
   isDate(dateOfBirth) {
-    if (/\d{2}-\d{2}-\d{4}$/.test(dateOfBirth)) {
+    if (/^\d{2}\.\d{2}\.\d{4}$/.test(dateOfBirth)) {
       return dateOfBirth;
     }
     throw new Error('Invalid of date of birth');
   }
 
   isEmail(email) {
-    if (/^\+\d{2}\(\d{3}\)\d{3}-\d{2}-\d{2}$/.test(email)) {
+    if (/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(email)) {
       return email;
     }
     throw new Error('Invalid email address');

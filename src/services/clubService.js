@@ -5,7 +5,7 @@ class ClubService {
   async getAll() {
     try {
       return new Promise((resolve, reject) => {
-        database.query('SELECT * FROM clubs', (err, results) => {
+        database.query('SELECT * FROM sports.clubs', (err, results) => {
           if (err) {
             reject(err);
           }
@@ -17,16 +17,15 @@ class ClubService {
     }
   }
 
-  // async getOne(id) {
-  //   const key = id;
-  //   return new Promise((resolve, reject) => {
-  //     database.query("SELECT * FROM clubs WHERE name = 'Alex'", (err, results) => {
-  //       if (err) {
-  //         reject(err);
-  //       }
-  //       resolve(results);
+  //   async getOne(id) {
+  //     return new Promise((resolve, reject) => {
+  //       database.query('SELECT * FROM sports.clubs WHERE id = key', (err, results) => {
+  //         if (err) {
+  //           reject(err);
+  //         }
+  //         resolve(results);
+  //       });
   //     });
-  //   });
-  // }
+  //   }
 }
 export const clubService = new ClubService();
