@@ -3,7 +3,7 @@ export class Validator {
     if (/^[a-zA-Zа-яА-ЯёЁ]{4,50}$/.test(name)) {
       return name;
     }
-    throw new Error('Invalid first name or last name');
+    throw new Error('Invalid entered');
   }
 
   isNumber(number) {

@@ -2,6 +2,7 @@ import { routes } from './appRoutes.js';
 import { sendResponse } from '../utils/sendResponse.js';
 import { httpCodes } from '../utils/httpCodes.js';
 import { NotFoundException } from '../utils/exceptions/NotFoundException.js';
+import { InternalServerException } from '../utils/exceptions/InternalServerException.js';
 
 export const router = (req, res) => {
   const params = {};
@@ -22,17 +23,16 @@ export const router = (req, res) => {
     return resultPath;
   };
 
-  const getController = (url) => {
-    const currentUrl = findRouter(url, routes[routes.length - 1].path);
-    return routes.filter((route) => route.path === currentUrl);
-  };
-
+  const getController = (url) => routes.find((route) => route.path === findRouter(url, route.path));
   const startRout = async (url) => {
-    const foundRoute = getController(url);
-    if (foundRoute.length === 0) {
+    if (!getController(url)) {
       throw new NotFoundException('Not found route');
     }
-    await foundRoute.at(0).methods[req.method](res, req, params);
+    await getController(url)
+      .methods[req.method](res, req, params)
+      .catch((err) => {
+        throw new InternalServerException(err);
+      });
   };
 
   startRout(req.url).catch((err) => {
