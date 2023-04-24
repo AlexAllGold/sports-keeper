@@ -1,4 +1,4 @@
-export class BaseExceptions extends Error {
+export class BaseCustomException extends Error {
   statusCode;
 
   constructor(message, statusCode) {
