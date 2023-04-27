@@ -6,7 +6,7 @@ export const routes = [
     path: '/api/clubs',
     methods: {
       GET: clubsController.getAll,
-      POST: clubsController.createClub,
+      POST: clubsController.create,
     },
   },
   {
@@ -21,7 +21,7 @@ export const routes = [
     path: '/api/clubs/:id/clients',
     methods: {
       GET: clientsControllers.getAll,
-      POST: clientsControllers.createClient,
+      POST: clientsControllers.create,
     },
   },
   {
