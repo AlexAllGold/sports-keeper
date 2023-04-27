@@ -7,10 +7,10 @@ export class ClubDto extends Validator {
 
   address;
 
-  constructor(client) {
+  constructor(club) {
     super();
-    this.name = this.isString(client.name);
-    this.description = this.isString(client.description);
-    this.address = this.isString(client.address);
+    this.name = this.isString(club.name);
+    this.description = this.isString(club.description);
+    this.address = this.isString(club.address);
   }
 }
