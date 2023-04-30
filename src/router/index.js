@@ -25,14 +25,13 @@ export const router = (req, res) => {
 
   const getController = (url) => routes.find((route) => route.path === findRouter(url, route.path));
   const startRout = async (url) => {
-    if (!getController(url)) {
+    const controller = getController(url);
+    if (!controller) {
       throw new NotFoundException('Not found route');
     }
-    await getController(url)
-      .methods[req.method](res, req, params)
-      .catch((err) => {
-        throw new InternalServerException(err);
-      });
+    await controller.methods[req.method](res, req, params).catch((err) => {
+      throw new InternalServerException(err);
+    });
   };
 
   startRout(req.url).catch((err) => {

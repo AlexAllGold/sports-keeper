@@ -1,5 +1,6 @@
 import { database } from '../config/database.js';
 import { InternalServerException } from '../utils/exceptions/InternalServerException.js';
+import { NotFoundException } from '../utils/exceptions/NotFoundException.js';
 
 class ClientService {
   async getAll() {
@@ -21,10 +22,12 @@ class ClientService {
     try {
       return new Promise((resolve, reject) => {
         database.query('SELECT * FROM sports.clients WHERE id = ?', [id], (err, results) => {
-          if (err) {
-            reject(err);
+          if (err || results.length === 0) {
+            reject(new NotFoundException('Invalid ID'));
           }
-          resolve(results);
+          if (results.length !== 0) {
+            resolve(results);
+          }
         });
       });
     } catch (err) {
@@ -56,10 +59,10 @@ class ClientService {
       return new Promise((resolve, reject) => {
         database.query(
           'UPDATE sports.clients SET clubId = ?, firstName = ?, lastName = ?, dateOfBirth = ?, email = ? WHERE id = ?',
-          [dto.name, dto.description, dto.address, id],
+          [dto.clubId, dto.firstName, dto.lastName, dto.dateOfBirth, dto.email, id],
           (err, results) => {
-            if (err) {
-              reject(err);
+            if (err || results.affectedRows === 0) {
+              reject(new NotFoundException('Invalid ID'));
             }
             resolve(results);
           },
@@ -74,8 +77,8 @@ class ClientService {
     try {
       return new Promise((resolve, reject) => {
         database.query('DELETE FROM sports.clients WHERE id = ?', [id], (err, results) => {
-          if (err) {
-            reject(err);
+          if (err || results.affectedRows === 0) {
+            reject(new NotFoundException('Invalid ID'));
           }
           resolve(results);
         });

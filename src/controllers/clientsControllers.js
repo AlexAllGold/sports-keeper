@@ -11,27 +11,27 @@ class ClientsControllers {
   }
 
   async getOne(res, req, params) {
-    const client = await clientService.getOne(params.clientId);
+    const client = await clientService.getOne(params.clientId, res);
     sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
   }
 
   async create(res, req) {
     const body = await bodyParser.parseBody(req);
     const dto = new ClientDto(body);
-    const club = clientService.create(dto);
-    sendResponse(res, httpCodes.SUCCESS, `Club registered! ${club}`);
+    const client = await clientService.create(dto);
+    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
   }
 
   async update(res, req, params) {
     const body = await bodyParser.parseBody(req);
     const dto = new ClientDto(body);
-    const club = await clientService.update(params.clubId, dto);
-    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(club));
+    const client = await clientService.update(params.clientId, dto);
+    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
   }
 
   async remove(res, req, params) {
-    const club = await clientService.remove(params.clubId);
-    sendResponse(res, httpCodes.SUCCESS, `Club delete! ${club}`);
+    const client = await clientService.remove(params.clientId);
+    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
   }
 }
 
