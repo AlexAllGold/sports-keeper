@@ -5,33 +5,33 @@ import { bodyParser } from '../utils/bodyParser.js';
 import { ClientDto } from '../dtos/сlient.dto.js';
 
 class ClientsControllers {
-  async getAll(res) {
-    const client = await clientService.getAll();
+  async getAllByClubId(res, req, params) {
+    const client = await clientService.getAllByClubId(params.clubId);
     sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
   }
 
   async getOne(res, req, params) {
-    const client = await clientService.getOne(params.clientId, res);
+    const client = await clientService.getOne(params.clubId, params.clientId);
     sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
   }
 
-  async create(res, req) {
+  async create(res, req, params) {
     const body = await bodyParser.parseBody(req);
-    const dto = new ClientDto(body);
-    const client = await clientService.create(dto);
-    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
+    const dto = new ClientDto(params, body);
+    await clientService.create(dto, params.clubId);
+    sendResponse(res, httpCodes.CREATE, JSON.stringify(dto));
   }
 
   async update(res, req, params) {
     const body = await bodyParser.parseBody(req);
-    const dto = new ClientDto(body);
-    const client = await clientService.update(params.clientId, dto);
-    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
+    const dto = new ClientDto(params, body);
+    await clientService.update(params.clientId, dto);
+    sendResponse(res, httpCodes.ACCEPTED, JSON.stringify(dto));
   }
 
   async remove(res, req, params) {
-    const client = await clientService.remove(params.clientId);
-    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
+    await clientService.remove(params.clubId, params.clientId);
+    sendResponse(res, httpCodes.NO_CONTENT);
   }
 }
 

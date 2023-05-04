@@ -15,23 +15,23 @@ class ClubsControllers {
     sendResponse(res, httpCodes.SUCCESS, JSON.stringify(club));
   }
 
-  async create(res, req) {
+  async create(res, req, params) {
     const body = await bodyParser.parseBody(req);
-    const dto = new ClubDto(body);
-    const club = clubService.create(dto);
-    sendResponse(res, httpCodes.SUCCESS, `Club registered! ${club}`);
+    const dto = new ClubDto(params.clubId, body);
+    await clubService.create(dto);
+    sendResponse(res, httpCodes.CREATE, JSON.stringify(body));
   }
 
   async update(res, req, params) {
     const body = await bodyParser.parseBody(req);
-    const dto = new ClubDto(body);
-    const club = await clubService.update(params.clubId, dto);
-    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(club));
+    const dto = new ClubDto(params.clubId, body);
+    await clubService.update(dto);
+    sendResponse(res, httpCodes.ACCEPTED, JSON.stringify(body));
   }
 
   async remove(res, req, params) {
-    const club = await clubService.remove(params.clubId);
-    sendResponse(res, httpCodes.SUCCESS, `Club delete! ${club}`);
+    await clubService.remove(params.clubId);
+    sendResponse(res, httpCodes.NO_CONTENT);
   }
 }
 

@@ -3,6 +3,7 @@ import { sendResponse } from '../utils/sendResponse.js';
 import { httpCodes } from '../utils/httpCodes.js';
 import { NotFoundException } from '../utils/exceptions/NotFoundException.js';
 import { InternalServerException } from '../utils/exceptions/InternalServerException.js';
+import { BadRequestException } from '../utils/exceptions/BadRequestException.js';
 
 export const router = (req, res) => {
   const params = {};
@@ -14,6 +15,9 @@ export const router = (req, res) => {
       const currentId = routPath[i];
       resultPath += '/';
       if (currentId !== undefined && currentId.indexOf(':') !== -1 && urlPath[i] !== '') {
+        if (!Number.isInteger(Number(urlPath[i]))) {
+          throw new BadRequestException('id must be an integer');
+        }
         params[currentId.slice(1)] = urlPath[i];
         resultPath += currentId;
       } else {
@@ -23,14 +27,14 @@ export const router = (req, res) => {
     return resultPath;
   };
 
-  const getController = (url) => routes.find((route) => route.path === findRouter(url, route.path));
+  const getController = (url) => routes.find((route) => route.path === findRouter(url, route.path))?.methods[req.method];
   const startRout = async (url) => {
     const controller = getController(url);
     if (!controller) {
       throw new NotFoundException('Not found route');
     }
-    await controller.methods[req.method](res, req, params).catch((err) => {
-      throw new InternalServerException(err);
+    await controller(res, req, params).catch((err) => {
+      throw new InternalServerException(err, err.stausCode);
     });
   };
 

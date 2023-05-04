@@ -1,6 +1,16 @@
 import { NotFoundException } from './exceptions/NotFoundException.js';
+import { BadRequestException } from './exceptions/BadRequestException.js';
 
 export class Validator {
+  isId(clubId, id) {
+    if (clubId !== id) {
+      throw new BadRequestException('Id not equal to body id');
+    }
+    return clubId;
+  }
+
+  // проверка из ДТО!
+
   isString(name) {
     if (/^[a-zA-Zа-яА-ЯёЁ]{4,50}$/.test(name)) {
       return name;
@@ -9,7 +19,7 @@ export class Validator {
   }
 
   isNumber(number) {
-    if (/^[0-9]|\. |,|:*$/.test(number)) {
+    if (/[0-9]|\. |,|:*$/.test(number)) {
       return number;
     }
     throw new NotFoundException('Invalid ID');
