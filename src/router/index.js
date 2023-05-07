@@ -7,7 +7,7 @@ import { BadRequestException } from '../utils/exceptions/BadRequestException.js'
 
 export const router = (req, res) => {
   const params = {};
-  const findRouter = (url, rout) => {
+  const findMatchedPath = (url, rout) => {
     const urlPath = url.split('/');
     const routPath = rout.split('/');
     let resultPath = '';
@@ -27,7 +27,7 @@ export const router = (req, res) => {
     return resultPath;
   };
 
-  const getController = (url) => routes.find((route) => route.path === findRouter(url, route.path))?.methods[req.method];
+  const getController = (url) => routes.find((route) => route.path === findMatchedPath(url, route.path))?.methods[req.method];
   const startRout = async (url) => {
     const controller = getController(url);
     if (!controller) {

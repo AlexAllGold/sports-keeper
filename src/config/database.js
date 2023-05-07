@@ -5,7 +5,7 @@ class Database {
   getDb() {
     const dbConfig = {
       host: configService.getHost(),
-      port: configService.getDbPort(),
+      port: Number(configService.getDbPort()),
       user: configService.getDbUser(),
       password: configService.getDbPass(),
       database: 'sports',

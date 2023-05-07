@@ -66,7 +66,4 @@ class ClientService {
   }
 }
 
-// есть ли Enum в Mysql !
-// Зоны timeZone UTC
-
 export const clientService = new ClientService();
