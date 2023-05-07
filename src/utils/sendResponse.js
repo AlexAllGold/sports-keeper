@@ -1,5 +1,5 @@
 export function sendResponse(res, httpCodes, message) {
   res.statusCode = httpCodes;
-  res.setHeader('Content-Type', 'text/plain');
+  res.setHeader('Content-Type', 'application/json');
   res.end(message);
 }

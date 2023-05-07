@@ -1,41 +1,44 @@
 import { routes } from './appRoutes.js';
-import { httpCodes } from '../utils/httpCodes.js';
 import { sendResponse } from '../utils/sendResponse.js';
+import { httpCodes } from '../utils/httpCodes.js';
+import { NotFoundException } from '../utils/exceptions/NotFoundException.js';
+import { InternalServerException } from '../utils/exceptions/InternalServerException.js';
+import { BadRequestException } from '../utils/exceptions/BadRequestException.js';
 
 export const router = (req, res) => {
   const params = {};
-
-  const glueUrl = ((url, rout) => {
+  const findMatchedPath = (url, rout) => {
     const urlPath = url.split('/');
     const routPath = rout.split('/');
     let resultPath = '';
-    urlPath.forEach((pathUrl) => {
-      const currentId = routPath[pathUrl];
+    for (let i = 1; i < urlPath.length; i += 1) {
+      const currentId = routPath[i];
       resultPath += '/';
-      if (currentId !== undefined && currentId.indexOf(':') !== -1 && pathUrl !== '') {
-        params[currentId.slice(1)] = pathUrl;
+      if (currentId !== undefined && currentId.indexOf(':') !== -1 && urlPath[i] !== '') {
+        if (!Number.isInteger(Number(urlPath[i]))) {
+          throw new BadRequestException('id must be an integer');
+        }
+        params[currentId.slice(1)] = urlPath[i];
         resultPath += currentId;
       } else {
-        resultPath += pathUrl;
+        resultPath += urlPath[i];
       }
-    });
+    }
     return resultPath;
-  });
+  };
 
-  const isPath = ((url) => {
-    let flag = false;
-    routes.forEach((rout) => {
-      const currentUrl = glueUrl(url, rout.path);
-      if (rout.path === currentUrl) {
-        rout.methods[req.method](res, params);
-        flag = true;
-      }
+  const getController = (url) => routes.find((route) => route.path === findMatchedPath(url, route.path))?.methods[req.method];
+  const startRout = async (url) => {
+    const controller = getController(url);
+    if (!controller) {
+      throw new NotFoundException('Not found route');
+    }
+    await controller(res, req, params).catch((err) => {
+      throw new InternalServerException(err, err.stausCode);
     });
-    return flag;
-  });
+  };
 
-  if (!isPath(req.url)) {
-    const message = 'Not found';
-    sendResponse(res, httpCodes.NOT_FOUND, message);
-  }
+  startRout(req.url).catch((err) => {
+    sendResponse(res, err.statusCode || httpCodes.INTERNAL_SERVER_ERROR, err.message);
+  });
 };
