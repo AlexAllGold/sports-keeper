@@ -1,11 +1,9 @@
-import http from 'http';
-import { router } from './router/index.js';
+import { App } from './app.js';
 import { configService } from './config/configService.js';
 
-const host = configService.getHost();
+const app = new App().bootstrap();
 const port = configService.getPort();
-const server = http.createServer(router);
 
-server.listen(port || 5000, host, () => {
-  console.log(`Sever Working http://${host}:${port}/`);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });

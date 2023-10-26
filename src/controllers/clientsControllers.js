@@ -1,37 +1,33 @@
 import { httpCodes } from '../utils/httpCodes.js';
-import { sendResponse } from '../utils/sendResponse.js';
 import { clientService } from '../services/clientService.js';
-import { bodyParser } from '../utils/bodyParser.js';
 import { ClientDto } from '../dtos/сlient.dto.js';
 
 class ClientsControllers {
-  async getAllByClubId(res, req, params) {
-    const client = await clientService.getAllByClubId(params.clubId);
-    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
+  async getAllByClubId(req, res) {
+    const clients = await clientService.getAllByClubId(req.params.clubId);
+    res.status(httpCodes.SUCCESS).json(clients);
   }
 
-  async getOne(res, req, params) {
-    const client = await clientService.getOne(params.clubId, params.clientId);
-    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(client));
+  async getOne(req, res) {
+    const client = await clientService.getOne(req.params.clubId, req.params.clientId);
+    res.status(httpCodes.SUCCESS).json(client);
   }
 
-  async create(res, req, params) {
-    const body = await bodyParser.parseBody(req);
-    const dto = new ClientDto(params, body);
-    await clientService.create(dto, params.clubId);
-    sendResponse(res, httpCodes.CREATE, JSON.stringify(dto));
+  async create(req, res) {
+    const dto = new ClientDto(req.params, req.body);
+    await clientService.create(dto, req.params.clubId);
+    res.status(httpCodes.SUCCESS).json(req.body);
   }
 
-  async update(res, req, params) {
-    const body = await bodyParser.parseBody(req);
-    const dto = new ClientDto(params, body);
-    await clientService.update(params.clientId, dto);
-    sendResponse(res, httpCodes.ACCEPTED, JSON.stringify(dto));
+  async update(req, res) {
+    const dto = new ClientDto(req.params, req.body);
+    await clientService.update(req.params.clientId, dto);
+    res.status(httpCodes.ACCEPTED).json(dto);
   }
 
-  async remove(res, req, params) {
-    await clientService.remove(params.clubId, params.clientId);
-    sendResponse(res, httpCodes.NO_CONTENT);
+  async remove(req, res) {
+    await clientService.remove(req.params.clubId, req.params.clientId);
+    res.status(httpCodes.NO_CONTENT).end();
   }
 }
 
