@@ -1,5 +1,15 @@
 import { createLogger } from 'winston';
 import * as winston from 'winston';
+import MySQLTransport from 'winston-mysql';
+import { configService } from '../config/configService.js';
+
+const baseLogger = {
+  host: configService.getHost(),
+  user: configService.getDbUser(),
+  password: configService.getDbPass(),
+  database: configService.getNameDb(),
+  table: 'loggers',
+};
 
 const levels = {
   error: 0,
@@ -38,6 +48,7 @@ const transports = [
     level: 'error',
   }),
   new winston.transports.File({ filename: 'logs/all.log' }),
+  new MySQLTransport({ ...baseLogger, level: 'error' }),
 ];
 
 export const logger = createLogger({

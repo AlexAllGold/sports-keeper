@@ -1,17 +1,26 @@
 import mysql from 'mysql2';
 import { configService } from './configService.js';
+import { logger } from '../utils/logger.js';
 
 class Database {
   getDb() {
-    const dbConfig = {
+    const pool = mysql.createPool({
       host: configService.getHost(),
       port: Number(configService.getDbPort()),
       user: configService.getDbUser(),
       password: configService.getDbPass(),
-      database: 'sports',
+      database: configService.getNameDb(),
       connectionLimit: 10,
-    };
-    return mysql.createPool(dbConfig);
+    });
+    pool.getConnection((err, connection) => {
+      if (err) {
+        logger.info('Error connecting to MySQL:');
+      } else {
+        logger.info('Connected to MySQL');
+        connection.release();
+      }
+    });
+    return pool;
   }
 }
 
