@@ -1,37 +1,33 @@
 import { httpCodes } from '../utils/httpCodes.js';
-import { sendResponse } from '../utils/sendResponse.js';
 import { clubService } from '../services/clubService.js';
-import { bodyParser } from '../utils/bodyParser.js';
 import { ClubDto } from '../dtos/club.dto.js';
 
 class ClubsControllers {
-  async getAll(res) {
+  async getAll(req, res) {
     const clubs = await clubService.getAll();
-    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(clubs));
+    res.status(httpCodes.SUCCESS).json(clubs);
   }
 
-  async getOne(res, req, params) {
-    const club = await clubService.getOne(params.clubId);
-    sendResponse(res, httpCodes.SUCCESS, JSON.stringify(club));
+  async getOne(req, res) {
+    const club = await clubService.getOne(req.params.clubId);
+    res.status(httpCodes.SUCCESS).json(club);
   }
 
-  async create(res, req, params) {
-    const body = await bodyParser.parseBody(req);
-    const dto = new ClubDto(params.clubId, body);
+  async create(req, res) {
+    const dto = new ClubDto(req.params.clubId, req.body);
     await clubService.create(dto);
-    sendResponse(res, httpCodes.CREATE, JSON.stringify(body));
+    res.status(httpCodes.CREATE).json(req.body);
   }
 
-  async update(res, req, params) {
-    const body = await bodyParser.parseBody(req);
-    const dto = new ClubDto(params.clubId, body);
+  async update(req, res) {
+    const dto = new ClubDto(req.params.clubId, req.body);
     await clubService.update(dto);
-    sendResponse(res, httpCodes.ACCEPTED, JSON.stringify(body));
+    res.status(httpCodes.ACCEPTED).json(req.body);
   }
 
-  async remove(res, req, params) {
-    await clubService.remove(params.clubId);
-    sendResponse(res, httpCodes.NO_CONTENT);
+  async remove(req, res) {
+    await clubService.remove(req.params.clubId);
+    res.status(httpCodes.NO_CONTENT).end();
   }
 }
 
