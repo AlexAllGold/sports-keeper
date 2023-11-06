@@ -14,7 +14,7 @@ class Database {
     });
     pool.getConnection((err, connection) => {
       if (err) {
-        logger.info('Error connecting to MySQL:');
+        logger.error('Error connecting to MySQL:', err);
       } else {
         logger.info('Connected to MySQL');
         connection.release();
