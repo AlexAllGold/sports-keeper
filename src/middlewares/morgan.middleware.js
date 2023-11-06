@@ -10,7 +10,7 @@ const skip = () => {
   return env !== 'development';
 };
 
-export const morganMiddleware = morgan(':remote-addr :method :url :status :res[content-length] - :response-time ms', {
+export const morganMiddleware = morgan('{ :url, :method }, StatusCode: :status [:response-time ms]', {
   stream,
   skip,
 });
