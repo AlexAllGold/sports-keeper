@@ -1,5 +1,5 @@
-import { database } from '../config/database.js';
-import { BadRequestException } from '../utils/exceptions/BadRequestException.js';
+import { database } from '../config/database';
+import { BadRequestException } from '../utils/exceptions/BadRequestException';
 
 class ClubService {
   async getAll() {

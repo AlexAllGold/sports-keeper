@@ -1,7 +1,7 @@
 import express from 'express';
-import { clubsController } from '../controllers/clubsControllers.js';
-import { clientsControllers } from '../controllers/clientsControllers.js';
-import { wrapperController } from '../utils/wrapperController.js';
+import { clubsController } from '../controllers/clubsControllers';
+import { clientsControllers } from '../controllers/clientsControllers';
+import { wrapperController } from '../utils/wrapperController';
 
 export const router = express.Router();
 

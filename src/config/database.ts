@@ -1,6 +1,6 @@
 import mysql from 'mysql2';
-import { configService } from './configService.js';
-import { logger } from '../utils/logger.js';
+import { configService } from './configService';
+import { logger } from '../utils/logger';
 
 class Database {
   getDb() {

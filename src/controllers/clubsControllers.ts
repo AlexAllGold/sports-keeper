@@ -1,6 +1,6 @@
-import { httpCodes } from '../utils/httpCodes.js';
-import { clubService } from '../services/clubService.js';
-import { ClubDto } from '../dtos/club.dto.js';
+import { httpCodes } from '../utils/httpCodes';
+import { clubService } from '../services/clubService';
+import { ClubDto } from '../dtos/club.dto';
 
 class ClubsControllers {
   async getAll(req, res) {

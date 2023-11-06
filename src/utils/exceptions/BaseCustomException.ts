@@ -1,3 +1,8 @@
+export interface BaseErrorType {
+  message: string;
+  statusCode?: string;
+}
+
 export class BaseCustomException extends Error {
   statusCode;
 

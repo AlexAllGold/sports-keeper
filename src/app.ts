@@ -1,7 +1,7 @@
 import express from 'express';
-import { router } from './router/routes.js';
-import { errorHandler } from './utils/errorHandler.js';
-import { morganMiddleware } from './middlewares/morgan.middleware.js';
+import { router } from './router/routes';
+import { errorHandler } from './utils/errorHandler';
+import { morganMiddleware } from './middlewares/morgan.middleware';
 
 export class App {
   bootstrap() {

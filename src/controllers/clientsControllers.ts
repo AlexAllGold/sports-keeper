@@ -1,6 +1,6 @@
-import { httpCodes } from '../utils/httpCodes.js';
-import { clientService } from '../services/clientService.js';
-import { ClientDto } from '../dtos/сlient.dto.js';
+import { httpCodes } from '../utils/httpCodes';
+import { clientService } from '../services/clientService';
+import { ClientDto } from '../dtos/сlient.dto';
 
 class ClientsControllers {
   async getAllByClubId(req, res) {

@@ -1,5 +1,5 @@
-import { NotFoundException } from './exceptions/NotFoundException.js';
-import { BadRequestException } from './exceptions/BadRequestException.js';
+import { NotFoundException } from './exceptions/NotFoundException';
+import { BadRequestException } from './exceptions/BadRequestException';
 
 export class Validator {
   isId(clubId, id) {

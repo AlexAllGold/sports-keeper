@@ -1,5 +1,5 @@
-import { httpCodes } from './httpCodes.js';
-import { logger } from './logger.js';
+import { httpCodes } from './httpCodes';
+import { logger } from './logger';
 
 // eslint-disable-next-line consistent-return
 export function errorHandler(err, req, res, next) {

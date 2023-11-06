@@ -1,4 +1,4 @@
-import { Validator } from '../utils/validator.js';
+import { Validator } from '../utils/validator';
 
 export class ClientDto extends Validator {
   id;

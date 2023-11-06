@@ -1,7 +1,7 @@
 import { createLogger } from 'winston';
 import * as winston from 'winston';
 import MySQLTransport from 'winston-mysql';
-import { configService } from '../config/configService.js';
+import { configService } from '../config/configService';
 
 const baseLogger = {
   host: configService.getHost(),

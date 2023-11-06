@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { InternalServerException } from '../utils/exceptions/InternalServerException.js';
+import { InternalServerException } from '../utils/exceptions/InternalServerException';
 
 class ConfigService {
   getDbUser() {
@@ -26,11 +26,11 @@ class ConfigService {
     return this.#getEnv('PORT');
   }
 
-  #getEnv(nameEnv) {
+  #getEnv(nameEnv: string) {
     if (process.env[nameEnv]) {
       return process.env[nameEnv];
     }
-    throw new InternalServerException(`Env ${nameEnv} does not exist`);
+    throw new InternalServerException({ message: `Env ${nameEnv} does not exist`, statusCode: 400 });
   }
 }
 export const configService = new ConfigService();
