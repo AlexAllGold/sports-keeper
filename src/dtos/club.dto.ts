@@ -1,15 +1,15 @@
 import { Validator } from '../utils/validator';
 
 export class ClubDto extends Validator {
-  id;
+  id: string;
 
-  name;
+  name: string;
 
-  description;
+  description: string;
 
-  address;
+  address: string;
 
-  constructor(clubId, club) {
+  constructor(clubId: string, club) {
     super();
     this.id = this.isId(clubId, club?.id);
     this.name = this.isString(club.name);

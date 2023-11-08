@@ -1,12 +1,12 @@
 export interface BaseErrorType {
   message: string;
-  statusCode?: string;
+  statusCode?: number;
 }
 
-export class BaseCustomException extends Error {
-  statusCode;
-
-  constructor(message, statusCode) {
+// Вернусь к вопросу как правильно юзнуть Интерфейс!
+export class BaseCustomException extends Error implements BaseErrorType {
+  statusCode: number;
+  constructor(message: string, statusCode: number) {
     super(message);
     this.statusCode = statusCode;
     this.name = 'BaseExceptions';

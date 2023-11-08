@@ -1,5 +1,6 @@
 import { database } from '../config/database';
 import { BadRequestException } from '../utils/exceptions/BadRequestException';
+import { ClubDto } from '../dtos/club.dto';
 
 class ClubService {
   async getAll() {
@@ -13,7 +14,7 @@ class ClubService {
     });
   }
 
-  async getOne(id) {
+  async getOne(id: string) {
     return new Promise((resolve, reject) => {
       database.query('SELECT * FROM sports.clubs WHERE id = ?', [id], (err, results) => {
         if (err || results.length === 0) {
@@ -24,7 +25,7 @@ class ClubService {
     });
   }
 
-  async create(dto) {
+  async create(dto: ClubDto) {
     return new Promise((resolve, reject) => {
       database.query(
         'INSERT INTO sports.clubs (name, description, address) VALUES (?, ?, ?)',
@@ -39,7 +40,7 @@ class ClubService {
     });
   }
 
-  async update(dto) {
+  async update(dto: ClubDto) {
     return new Promise((resolve, reject) => {
       database.query(
         'UPDATE sports.clubs SET name = ?, description = ?, address = ? WHERE id = ?',
@@ -54,7 +55,7 @@ class ClubService {
     });
   }
 
-  async remove(id) {
+  async remove(id: string) {
     return new Promise((resolve, reject) => {
       database.query('DELETE FROM sports.clubs WHERE id = ?', [id], (err, results) => {
         if (err || results.affectedRows === 0) {
