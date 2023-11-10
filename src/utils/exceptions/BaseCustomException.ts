@@ -6,6 +6,7 @@ export interface BaseErrorType {
 // Вернусь к вопросу как правильно юзнуть Интерфейс!
 export class BaseCustomException extends Error implements BaseErrorType {
   statusCode: number;
+
   constructor(message: string, statusCode: number) {
     super(message);
     this.statusCode = statusCode;

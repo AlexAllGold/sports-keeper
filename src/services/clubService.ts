@@ -1,6 +1,6 @@
 import { database } from '../config/database';
 import { BadRequestException } from '../utils/exceptions/BadRequestException';
-import { ClubDto } from '../dtos/club.dto';
+import { CreateClubDto } from '../dtos/createClub.dto';
 
 class ClubService {
   async getAll() {
@@ -17,7 +17,7 @@ class ClubService {
   async getOne(id: string) {
     return new Promise((resolve, reject) => {
       database.query('SELECT * FROM sports.clubs WHERE id = ?', [id], (err, results) => {
-        if (err || results.length === 0) {
+        if (err || (Array.isArray(results) && results.length === 0)) {
           reject(new BadRequestException('Can not find this club'));
         }
         resolve(results[0]);
@@ -25,7 +25,7 @@ class ClubService {
     });
   }
 
-  async create(dto: ClubDto) {
+  async create(dto: CreateClubDto) {
     return new Promise((resolve, reject) => {
       database.query(
         'INSERT INTO sports.clubs (name, description, address) VALUES (?, ?, ?)',
@@ -40,13 +40,13 @@ class ClubService {
     });
   }
 
-  async update(dto: ClubDto) {
+  async update(id: string, dto: CreateClubDto) {
     return new Promise((resolve, reject) => {
       database.query(
         'UPDATE sports.clubs SET name = ?, description = ?, address = ? WHERE id = ?',
-        [dto.name, dto.description, dto.address, dto.id],
+        [dto.name, dto.description, dto.address, id],
         (err, results) => {
-          if (err || results.affectedRows === 0) {
+          if (err || ('affectedRows' in results && results.affectedRows === 0)) {
             reject(new BadRequestException('You cannot update'));
           }
           resolve(results);
@@ -58,7 +58,7 @@ class ClubService {
   async remove(id: string) {
     return new Promise((resolve, reject) => {
       database.query('DELETE FROM sports.clubs WHERE id = ?', [id], (err, results) => {
-        if (err || results.affectedRows === 0) {
+        if (err || ('affectedRows' in results && results.affectedRows === 0)) {
           reject(new BadRequestException('Can Not Found Club for Remove!'));
         }
         resolve(results);

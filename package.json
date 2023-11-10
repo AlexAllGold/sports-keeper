@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@types/morgan": "^1.9.9",
+    "class-validator": "^0.14.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
