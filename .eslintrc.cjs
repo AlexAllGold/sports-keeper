@@ -8,6 +8,8 @@ module.exports = {
     plugins: ['@typescript-eslint'],
     root: true,
     rules: {
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/explicit-function-return-type": "error",
         "indent": "off",
         "max-len": "off",
         "import/prefer-default-export": "off",

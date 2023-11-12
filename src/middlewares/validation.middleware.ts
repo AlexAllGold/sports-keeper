@@ -1,16 +1,13 @@
-import { validate, validateOrReject, ValidationError } from 'class-validator';
-import { logger } from '../utils/logger';
-import { NotFoundException } from '../utils/exceptions/NotFoundException';
+import { validateOrReject } from 'class-validator';
+import type { NextFunction, Response, Request } from 'express';
+import { BadRequestException } from '../utils/exceptions/BadRequestException';
 
-export async function validationMiddleware(post: object) {
-  logger.info(post);
-  await validate(post).then((errors: ValidationError[]) => {
-    if (errors.length > 0) {
-      throw new NotFoundException(errors.toString());
-    }
-  });
-
-  await validateOrReject(post).catch((errors: ValidationError[]) => {
-    throw new NotFoundException(errors.toString());
-  });
-}
+export const validationMiddleware =
+  (Dto) =>
+  (req: Request, res: Response, next: NextFunction): void => {
+    validateOrReject(new Dto(req.body))
+      .then(next)
+      .catch((error) => {
+        next(new BadRequestException(error as string));
+      });
+  };
