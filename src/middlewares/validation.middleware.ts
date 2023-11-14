@@ -4,7 +4,7 @@ import { BadRequestException } from '../utils/exceptions/BadRequestException';
 import { CreateClubDto } from '../dtos/createClub.dto';
 
 export const validationMiddleware = (Dto: CreateClubDto) => (req: Request, res: Response, next: NextFunction): void => {
-const dto = new Dto(req.body) as unknown as CreateClubDto;
+const dto :CreateClubDto = new Dto(req.body) as unknown as CreateClubDto;
     validateOrReject(dto)
         .then(next)
         .catch((error) => {
