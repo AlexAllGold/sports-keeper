@@ -10,6 +10,7 @@ module.exports = {
     rules: {
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/explicit-function-return-type": "error",
+        "linebreak-style": ["error", "windows"],
         "indent": "off",
         "max-len": "off",
         "import/prefer-default-export": "off",
@@ -21,7 +22,7 @@ module.exports = {
         "object-curly-newline": [
             "error",
             {
-                "ObjectExpression": "always",
+                "ObjectExpression": { "multiline": true },
                 "ObjectPattern": { "multiline": true },
                 "ImportDeclaration": { "multiline": true, "minProperties": 7 },
                 "ExportDeclaration": "never"

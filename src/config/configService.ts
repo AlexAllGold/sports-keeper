@@ -2,31 +2,31 @@ import 'dotenv/config';
 import { InternalServerException } from '../utils/exceptions/InternalServerException';
 
 class ConfigService {
-  getDbUser() {
+  getDbUser():string | undefined {
     return this.#getEnv('USER_DB');
   }
 
-  getDbPass() {
+  getDbPass():string | undefined {
     return this.#getEnv('PASS_DB');
   }
 
-  getNameDb() {
+  getNameDb():string | undefined {
     return this.#getEnv('NAME_DB');
   }
 
-  getDbPort() {
+  getDbPort():string | undefined {
     return this.#getEnv('PORT_DB');
   }
 
-  getHost() {
+  getHost():string | undefined {
     return this.#getEnv('HOST');
   }
 
-  getPort() {
+  getPort():string | undefined {
     return this.#getEnv('PORT');
   }
 
-  #getEnv(nameEnv: string) {
+  #getEnv(nameEnv: string):string | undefined {
     if (process.env[nameEnv]) {
       return process.env[nameEnv];
     }

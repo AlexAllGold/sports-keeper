@@ -5,7 +5,7 @@ import { CreateClientDto } from '../dtos/сreateClient.dto';
 class ClientService {
   async getAllByClubId(clubId: string) {
     return new Promise((resolve, reject) => {
-      database.query('SELECT * FROM sports.clients WHERE clubId = ?', [clubId], (err, results) => {
+       database.query('SELECT * FROM sports.clients WHERE clubId = ?', [clubId], (err, results) => {
         if (err || (Array.isArray(results) && results.length === 0)) {
           reject(new BadRequestException('Can not find clients from this club'));
         }

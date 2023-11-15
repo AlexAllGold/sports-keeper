@@ -1,9 +1,9 @@
-import mysql from 'mysql2';
+import mysql, { Pool } from 'mysql2';
 import { configService } from './configService';
 import { logger } from '../utils/logger';
 
 class Database {
-  getDb() {
+  getDb(): Pool {
     const pool = mysql.createPool({
       host: configService.getHost(),
       port: Number(configService.getDbPort()),
