@@ -1,27 +1,14 @@
-import mysql, { Pool } from 'mysql2';
+import { DataSource } from 'typeorm';
 import { configService } from './configService';
-import { logger } from '../utils/logger';
 
-class Database {
-  getDb(): Pool {
-    const pool = mysql.createPool({
-      host: configService.getHost(),
-      port: Number(configService.getDbPort()),
-      user: configService.getDbUser(),
-      password: configService.getDbPass(),
-      database: configService.getNameDb(),
-      connectionLimit: 10,
-    });
-    pool.getConnection((err, connection) => {
-      if (err) {
-        logger.error('Error connecting to MySQL:', err);
-      } else {
-        logger.info('Connected to MySQL');
-        connection.release();
-      }
-    });
-    return pool;
-  }
-}
-
-export const database = new Database().getDb();
+  export const database = new DataSource({
+  type: 'mysql',
+  host: configService.getHost(),
+  port: Number(configService.getPort()),
+  username: configService.getDbUser(),
+  password: configService.getDbPass(),
+  database: configService.getNameDb(),
+  entities: ['src/entites/*.js'],
+  logging: true,
+  synchronize: true,
+});

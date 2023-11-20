@@ -1,16 +1,12 @@
-import { IsEmail, IsString, IsInt, Length, IsDateString } from 'class-validator';
+import { IsDateString, IsEmail, IsInt, IsString, Length } from 'class-validator';
 
 export class CreateClientDto {
   @IsString()
-  @Length(5, 50, {
-    message: 'The firstName must have from 4 to 50 characters',
-  })
+  @Length(5, 50, { message: 'The firstName must have from 4 to 50 characters' })
   firstName: string;
 
   @IsString()
-  @Length(4, 50, {
-    message: 'The lastName must have from 4 to 50 characters',
-  })
+  @Length(4, 50, { message: 'The lastName must have from 4 to 50 characters' })
   lastName: string;
 
   @IsDateString()

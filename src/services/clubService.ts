@@ -1,69 +1,30 @@
 import { database } from '../config/database';
-import { BadRequestException } from '../utils/exceptions/BadRequestException';
 import { CreateClubDto } from '../dtos/createClub.dto';
+import { ClubsEntity } from '../entites/clubs.entity';
 
 class ClubService {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   async getAll() {
-    return new Promise((resolve, reject) => {
-      database.query('SELECT * FROM sports.clubs', (err, results) => {
-        if (err) {
-          reject(new BadRequestException('Can not find any clubs'));
-        }
-        resolve(results);
-      });
-    });
+    const result = await database.getRepository(ClubsEntity).find();
+    return result;
   }
 
   async getOne(id: string) {
-    return new Promise((resolve, reject) => {
-      database.query('SELECT * FROM sports.clubs WHERE id = ?', [id], (err, results) => {
-        if (err || (Array.isArray(results) && results.length === 0)) {
-          reject(new BadRequestException('Can not find this club'));
-        }
-        resolve(results[0]);
-      });
-    });
+    return database.getRepository(ClubsEntity).findOneBy({ id: id });
   }
 
   async create(dto: CreateClubDto) {
-    return new Promise((resolve, reject) => {
-      database.query(
-        'INSERT INTO sports.clubs (name, description, address) VALUES (?, ?, ?)',
-        [dto.name, dto.description, dto.address],
-        (err, results) => {
-          if (err) {
-            reject(err);
-          }
-          resolve(results);
-        },
-      );
-    });
+    return database.getRepository(ClubsEntity).save(dto);
   }
 
   async update(id: string, dto: CreateClubDto) {
-    return new Promise((resolve, reject) => {
-      database.query(
-        'UPDATE sports.clubs SET name = ?, description = ?, address = ? WHERE id = ?',
-        [dto.name, dto.description, dto.address, id],
-        (err, results) => {
-          if (err || ('affectedRows' in results && results.affectedRows === 0)) {
-            reject(new BadRequestException('You cannot update'));
-          }
-          resolve(results);
-        },
-      );
-    });
+    const club = database.getRepository(ClubsEntity).findOneBy({ id });
+    database.getRepository(ClubsEntity).merge(club, dto);
+    return database.getRepository(ClubsEntity).save(club);
   }
 
   async remove(id: string) {
-    return new Promise((resolve, reject) => {
-      database.query('DELETE FROM sports.clubs WHERE id = ?', [id], (err, results) => {
-        if (err || ('affectedRows' in results && results.affectedRows === 0)) {
-          reject(new BadRequestException('Can Not Found Club for Remove!'));
-        }
-        resolve(results);
-      });
-    });
+    return database.getRepository(ClubsEntity).delete(id);
   }
 }
 

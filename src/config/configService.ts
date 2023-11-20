@@ -22,17 +22,13 @@ class ConfigService {
     return this.#getEnv('HOST');
   }
 
-  getPort():string | undefined {
-    return this.#getEnv('PORT');
-  }
+  getPort():string | undefined { return this.#getEnv('PORT'); }
 
   #getEnv(nameEnv: string):string | undefined {
     if (process.env[nameEnv]) {
       return process.env[nameEnv];
     }
-    throw new InternalServerException({
-      message: `Env ${nameEnv} does not exist`,
-    });
+    throw new InternalServerException({ message: `Env ${nameEnv} does not exist` });
   }
 }
 export const configService = new ConfigService();
