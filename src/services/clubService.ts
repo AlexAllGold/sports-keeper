@@ -1,10 +1,13 @@
-import { database } from '../config/database.js';
-import { BadRequestException } from '../utils/exceptions/BadRequestException.js';
+import { ResultSetHeader } from 'mysql2';
+import { database } from '../config/database';
+import { BadRequestException } from '../utils/exceptions/BadRequestException';
+import { CreateClubDto } from '../dtos/createClub.dto';
+import { ClubEntity } from '../entities/club.entity';
 
 class ClubService {
-  async getAll() {
+  async getAll(): Promise<ClubEntity[]> {
     return new Promise((resolve, reject) => {
-      database.query('SELECT * FROM sports.clubs', (err, results) => {
+      database.query<ClubEntity[]>('SELECT * FROM sports.clubs', (err, results) => {
         if (err) {
           reject(new BadRequestException('Can not find any clubs'));
         }
@@ -13,10 +16,10 @@ class ClubService {
     });
   }
 
-  async getOne(id) {
+  async getOne(id: string): Promise<ClubEntity> {
     return new Promise((resolve, reject) => {
-      database.query('SELECT * FROM sports.clubs WHERE id = ?', [id], (err, results) => {
-        if (err || results.length === 0) {
+      database.query<ClubEntity[]>('SELECT * FROM sports.clubs WHERE id = ?', [id], (err, results) => {
+        if (err || (Array.isArray(results) && results.length === 0)) {
           reject(new BadRequestException('Can not find this club'));
         }
         resolve(results[0]);
@@ -24,43 +27,43 @@ class ClubService {
     });
   }
 
-  async create(dto) {
+  async create(dto: CreateClubDto): Promise<number> {
     return new Promise((resolve, reject) => {
-      database.query(
+      database.query<ResultSetHeader>(
         'INSERT INTO sports.clubs (name, description, address) VALUES (?, ?, ?)',
         [dto.name, dto.description, dto.address],
         (err, results) => {
           if (err) {
             reject(err);
           }
-          resolve(results);
+          resolve(results.insertId);
         },
       );
     });
   }
 
-  async update(dto) {
+  async update(id: string, dto: CreateClubDto): Promise<void> {
     return new Promise((resolve, reject) => {
       database.query(
         'UPDATE sports.clubs SET name = ?, description = ?, address = ? WHERE id = ?',
-        [dto.name, dto.description, dto.address, dto.id],
+        [dto.name, dto.description, dto.address, id],
         (err, results) => {
-          if (err || results.affectedRows === 0) {
+          if (err || ('affectedRows' in results && results.affectedRows === 0)) {
             reject(new BadRequestException('You cannot update'));
           }
-          resolve(results);
+          resolve();
         },
       );
     });
   }
 
-  async remove(id) {
+  async remove(id: string): Promise<void> {
     return new Promise((resolve, reject) => {
       database.query('DELETE FROM sports.clubs WHERE id = ?', [id], (err, results) => {
-        if (err || results.affectedRows === 0) {
+        if (err || ('affectedRows' in results && results.affectedRows === 0)) {
           reject(new BadRequestException('Can Not Found Club for Remove!'));
         }
-        resolve(results);
+        resolve();
       });
     });
   }

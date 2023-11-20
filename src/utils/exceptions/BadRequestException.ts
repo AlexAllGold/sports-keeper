@@ -1,8 +1,8 @@
-import { BaseCustomException } from './BaseCustomException.js';
-import { httpCodes } from '../httpCodes.js';
+import { BaseCustomException } from './BaseCustomException';
+import { httpCodes } from '../httpCodes';
 
 export class BadRequestException extends BaseCustomException {
-  constructor(message) {
+  constructor(message: string) {
     super(message, httpCodes.BAD_REQUEST);
     this.name = this.constructor.name;
   }

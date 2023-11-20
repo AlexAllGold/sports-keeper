@@ -1,11 +1,9 @@
-import morgan from 'morgan';
-import { logger } from '../utils/logger.js';
+import morgan, { StreamOptions } from 'morgan';
+import { logger } from '../utils/logger';
 
-const stream = {
-  write: (message) => logger.http(message),
-};
+const stream: StreamOptions = { write: (message) => logger.http(message) };
 
-const skip = () => {
+const skip = (): boolean => {
   const env = process.env.NODE_ENV || 'development';
   return env !== 'development';
 };

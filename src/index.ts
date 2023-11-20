@@ -1,6 +1,6 @@
-import { App } from './app.js';
-import { configService } from './config/configService.js';
-import { logger } from './utils/logger.js';
+import { App } from './app';
+import { configService } from './config/configService';
+import { logger } from './utils/logger';
 
 const app = new App().bootstrap();
 const port = configService.getPort();

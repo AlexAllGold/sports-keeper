@@ -1,7 +1,9 @@
 import { createLogger } from 'winston';
 import * as winston from 'winston';
+/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+// @ts-ignore
 import MySQLTransport from 'winston-mysql';
-import { configService } from '../config/configService.js';
+import { configService } from '../config/configService';
 
 const baseLogger = {
   host: configService.getHost(),
@@ -19,7 +21,7 @@ const levels = {
   debug: 4,
 };
 
-const level = () => {
+const level = (): string => {
   const env = process.env.NODE_ENV || 'development';
   const isDevelopment = env === 'development';
   return isDevelopment ? 'debug' : 'warn';
@@ -48,6 +50,7 @@ const transports = [
     level: 'error',
   }),
   new winston.transports.File({ filename: 'logs/all.log' }),
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   new MySQLTransport({ ...baseLogger, level: 'error' }),
 ];
 

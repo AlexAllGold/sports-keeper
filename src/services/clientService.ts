@@ -1,11 +1,14 @@
-import { database } from '../config/database.js';
-import { BadRequestException } from '../utils/exceptions/BadRequestException.js';
+import { ResultSetHeader } from 'mysql2';
+import { database } from '../config/database';
+import { BadRequestException } from '../utils/exceptions/BadRequestException';
+import { CreateClientDto } from '../dtos/сreateClient.dto';
+import { ClientEntity } from '../entities/client.entity';
 
 class ClientService {
-  async getAllByClubId(clubId) {
+  async getAllByClubId(clubId: string): Promise<ClientEntity[]> {
     return new Promise((resolve, reject) => {
-      database.query('SELECT * FROM sports.clients WHERE clubId = ?', [clubId], (err, results) => {
-        if (err || results.length === 0) {
+      database.query<ClientEntity[]>('SELECT * FROM sports.clients WHERE clubId = ?', [clubId], (err, results) => {
+        if (err || (Array.isArray(results) && results.length === 0)) {
           reject(new BadRequestException('Can not find clients from this club'));
         }
         resolve(results);
@@ -13,10 +16,10 @@ class ClientService {
     });
   }
 
-  async getOne(clubId, id) {
+  async getOne(clubId: string, id: string): Promise<ClientEntity> {
     return new Promise((resolve, reject) => {
-      database.query('SELECT * FROM sports.clients WHERE clubId = ? AND id = ?', [clubId, id], (err, results) => {
-        if (err || results.length === 0) {
+      database.query<ClientEntity[]>('SELECT * FROM sports.clients WHERE clubId = ? AND id = ?', [clubId, id], (err, results) => {
+        if (err || (Array.isArray(results) && results.length === 0)) {
           reject(new BadRequestException('Invalid ID from clients'));
         }
         resolve(results[0]);
@@ -24,43 +27,43 @@ class ClientService {
     });
   }
 
-  async create(dto) {
+  async create(dto: CreateClientDto): Promise<number> {
     return new Promise((resolve, reject) => {
-      database.query(
+      database.query<ResultSetHeader>(
         'INSERT INTO sports.clients (clubId, firstName, lastName, dateOfBirth, email) VALUES (?, ?, ?, ?, ?)',
         [dto.clubId, dto.firstName, dto.lastName, dto.dateOfBirth, dto.email],
         (err, results) => {
           if (err) {
             reject(err);
           }
-          resolve(results);
+          resolve(results.insertId);
         },
       );
     });
   }
 
-  async update(id, dto) {
+  async update(id: string, dto: CreateClientDto): Promise<void> {
     return new Promise((resolve, reject) => {
       database.query(
         'UPDATE sports.clients SET clubId = ?, firstName = ?, lastName = ?, dateOfBirth = ?, email = ? WHERE id = ?',
         [dto.clubId, dto.firstName, dto.lastName, dto.dateOfBirth, dto.email, id],
         (err, results) => {
-          if (err || results.affectedRows === 0) {
+          if (err || ('affectedRows' in results && results.affectedRows === 0)) {
             reject(new BadRequestException('Invalid ID from clients'));
           }
-          resolve(results);
+          resolve();
         },
       );
     });
   }
 
-  async remove(clubId, id) {
+  async remove(clubId: string, id: string): Promise<void> {
     return new Promise((resolve, reject) => {
       database.query('DELETE FROM sports.clients WHERE clubId = ? AND id = ?', [clubId, id], (err, results) => {
-        if (err || results.affectedRows === 0) {
+        if (err || ('affectedRows' in results && results.affectedRows === 0)) {
           reject(new BadRequestException('Can Not Found Client for Remove!'));
         }
-        resolve(results);
+        resolve();
       });
     });
   }
