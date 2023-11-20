@@ -30,9 +30,7 @@ class ConfigService {
     if (process.env[nameEnv]) {
       return process.env[nameEnv];
     }
-    throw new InternalServerException({
-      message: `Env ${nameEnv} does not exist`,
-    });
+    throw new InternalServerException({ message: `Env ${nameEnv} does not exist` });
   }
 }
 export const configService = new ConfigService();

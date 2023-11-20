@@ -17,8 +17,8 @@ class ClientsControllers {
   }
 
   async create(req: Request, res: Response): Promise<void> {
-    await clientService.create(req.body as CreateClientDto);
-    res.status(httpCodes.CREATE).json(req.body);
+    const id = await clientService.create(req.body as CreateClientDto);
+    res.status(httpCodes.CREATE).json({ ...req.body, id });
   }
 
   async update(req: Request, res: Response): Promise<void> {
