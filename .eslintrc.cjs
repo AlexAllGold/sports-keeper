@@ -8,6 +8,9 @@ module.exports = {
     plugins: ['@typescript-eslint'],
     root: true,
     rules: {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/unbound-method": "off",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/explicit-function-return-type": "error",
         "linebreak-style": ["error", "windows"],

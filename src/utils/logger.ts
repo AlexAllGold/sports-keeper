@@ -1,5 +1,7 @@
 import { createLogger } from 'winston';
 import * as winston from 'winston';
+/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+// @ts-ignore
 import MySQLTransport from 'winston-mysql';
 import { configService } from '../config/configService';
 
@@ -48,6 +50,7 @@ const transports = [
     level: 'error',
   }),
   new winston.transports.File({ filename: 'logs/all.log' }),
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   new MySQLTransport({ ...baseLogger, level: 'error' }),
 ];
 
