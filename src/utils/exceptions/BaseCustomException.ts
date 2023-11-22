@@ -2,8 +2,6 @@ export interface BaseErrorType {
   message: string;
   statusCode?: number;
 }
-
-// Вернусь к вопросу как правильно юзнуть Интерфейс!
 export class BaseCustomException extends Error implements BaseErrorType {
   statusCode: number;
 

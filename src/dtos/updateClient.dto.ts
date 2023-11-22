@@ -1,7 +1,10 @@
+import { IsInt, IsNotEmpty } from 'class-validator';
 import { CreateClientDto } from './сreateClient.dto';
 
 export class UpdateClientDto extends CreateClientDto {
-  id: string;
+  @IsInt()
+  @IsNotEmpty()
+  id: number;
 
   constructor(body: UpdateClientDto) {
     super(body);

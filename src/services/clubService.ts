@@ -1,31 +1,46 @@
-import { database } from '../config/database';
+import { Repository } from 'typeorm';
+import { Database } from '../config/database';
 import { CreateClubDto } from '../dtos/createClub.dto';
-import { ClubsEntity } from '../entites/clubs.entity';
+import { ClubEntity } from '../entities/club.entity';
+import { BadRequestException } from '../utils/exceptions/BadRequestException';
+import { UpdateClubDto } from '../dtos/updateClub.dto';
 
 class ClubService {
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  async getAll() {
-    const result = await database.getRepository(ClubsEntity).find();
-    return result;
+  clubRepository: Repository<ClubEntity>;
+
+  constructor() {
+    this.clubRepository = Database.dataSource.getRepository(ClubEntity);
   }
 
-  async getOne(id: string) {
-    return database.getRepository(ClubsEntity).findOneBy({ id: id });
+  async getAll(): Promise<ClubEntity[]> {
+    return this.clubRepository.find();
   }
 
-  async create(dto: CreateClubDto) {
-    return database.getRepository(ClubsEntity).save(dto);
+  async getOne(id: number): Promise<ClubEntity> {
+    const club: ClubEntity | null = await this.clubRepository.findOneBy({ id });
+    if (club) {
+      return club;
+    }
+    throw new BadRequestException('Can not find this club!');
   }
 
-  async update(id: string, dto: CreateClubDto) {
-    const club = database.getRepository(ClubsEntity).findOneBy({ id });
-    database.getRepository(ClubsEntity).merge(club, dto);
-    return database.getRepository(ClubsEntity).save(club);
+  async create(dto: CreateClubDto): Promise<ClubEntity> {
+    return this.clubRepository.save(dto);
   }
 
-  async remove(id: string) {
-    return database.getRepository(ClubsEntity).delete(id);
+  async update(id: number, dto: UpdateClubDto): Promise<ClubEntity> {
+    if (id !== Number(dto.id)) {
+      throw new BadRequestException('Id Club does not match');
+    }
+    const club: ClubEntity = await this.getOne(id);
+    this.clubRepository.merge(club, dto);
+    return this.clubRepository.save(club);
+  }
+
+  async remove(id: number): Promise<void> {
+    await this.getOne(id);
+    await this.clubRepository.delete(id);
   }
 }
 
-export const clubService = new ClubService();
+export const clubService: ClubService = new ClubService();

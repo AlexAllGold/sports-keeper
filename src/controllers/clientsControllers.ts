@@ -3,37 +3,33 @@ import { httpCodes } from '../utils/httpCodes';
 import { clientService } from '../services/clientService';
 import { UpdateClientDto } from '../dtos/updateClient.dto';
 import { CreateClientDto } from '../dtos/сreateClient.dto';
-import { BadRequestException } from '../utils/exceptions/BadRequestException';
+import { ClientEntity } from '../entities/client.entity';
 
 class ClientsControllers {
   async getAllByClubId(req: Request, res: Response): Promise<void> {
-    const clients = await clientService.getAllByClubId(req.params.clubId);
+    const clients: ClientEntity[] = await clientService.getAllByClubId(Number(req.params.clubId));
     res.status(httpCodes.SUCCESS).json(clients);
   }
 
   async getOne(req: Request, res: Response): Promise<void> {
-    const client = await clientService.getOne(req.params.clubId, req.params.clientId);
+    const client: ClientEntity = await clientService.getOne(Number(req.params.clubId), Number(req.params.clientId));
     res.status(httpCodes.SUCCESS).json(client);
   }
 
   async create(req: Request, res: Response): Promise<void> {
-    await clientService.create(req.body as CreateClientDto);
-    res.status(httpCodes.CREATE).json(req.body);
+    const client:ClientEntity = await clientService.create(req.params, req.body as CreateClientDto);
+    res.status(httpCodes.CREATE).json(client);
   }
 
   async update(req: Request, res: Response): Promise<void> {
-    const clientDto = req.body as UpdateClientDto;
-    if (Number(req.params?.clientId) !== Number(clientDto?.id)) {
-      throw new BadRequestException('Id Client does not match');
-    }
-    await clientService.update(req.params.clientId, clientDto);
-    res.status(httpCodes.ACCEPTED).json(clientDto);
+    const client: ClientEntity = await clientService.update(req.params, req.body as UpdateClientDto);
+    res.status(httpCodes.ACCEPTED).json(client);
   }
 
   async remove(req: Request, res: Response): Promise<void> {
-    await clientService.remove(req.params.clubId, req.params.clientId);
+    await clientService.remove(Number(req.params.clubId), Number(req.params.clientId));
     res.status(httpCodes.NO_CONTENT).end();
   }
 }
 
-export const clientsControllers = new ClientsControllers();
+export const clientsControllers: ClientsControllers = new ClientsControllers();

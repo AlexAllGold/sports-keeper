@@ -1,70 +1,52 @@
-import { database } from '../config/database';
+import { Repository } from 'typeorm';
 import { BadRequestException } from '../utils/exceptions/BadRequestException';
 import { CreateClientDto } from '../dtos/сreateClient.dto';
+import { ClientEntity } from '../entities/client.entity';
+import { Database } from '../config/database';
+import { UpdateClientDto } from '../dtos/updateClient.dto';
 
 class ClientService {
-  async getAllByClubId(clubId: string) {
-    return new Promise((resolve, reject) => {
-       database.query('SELECT * FROM sports.clients WHERE clubId = ?', [clubId], (err, results) => {
-        if (err || (Array.isArray(results) && results.length === 0)) {
-          reject(new BadRequestException('Can not find clients from this club'));
-        }
-        resolve(results);
-      });
-    });
+  clientRepository: Repository<ClientEntity>;
+
+  constructor() {
+    this.clientRepository = Database.dataSource.getRepository(ClientEntity);
   }
 
-  async getOne(clubId: string, id: string) {
-    return new Promise((resolve, reject) => {
-      database.query('SELECT * FROM sports.clients WHERE clubId = ? AND id = ?', [clubId, id], (err, results) => {
-        if (err || (Array.isArray(results) && results.length === 0)) {
-          reject(new BadRequestException('Invalid ID from clients'));
-        }
-        resolve(results[0]);
-      });
-    });
+  async getAllByClubId(clubId: number): Promise<ClientEntity[]> {
+    return this.clientRepository.findBy({ clubId });
   }
 
-  async create(dto: CreateClientDto) {
-    return new Promise((resolve, reject) => {
-      database.query(
-        'INSERT INTO sports.clients (clubId, firstName, lastName, dateOfBirth, email) VALUES (?, ?, ?, ?, ?)',
-        [dto.clubId, dto.firstName, dto.lastName, dto.dateOfBirth, dto.email],
-        (err, results) => {
-          if (err) {
-            reject(err);
-          }
-          resolve(results);
-        },
-      );
-    });
+  async getOne(clubId: number, id: number): Promise<ClientEntity> {
+    const client: ClientEntity | null = await this.clientRepository.findOneBy({ clubId, id });
+    if (client) {
+      return client;
+    }
+    throw new BadRequestException('Can not find this client!');
   }
 
-  async update(id: string, dto: CreateClientDto) {
-    return new Promise((resolve, reject) => {
-      database.query(
-        'UPDATE sports.clients SET clubId = ?, firstName = ?, lastName = ?, dateOfBirth = ?, email = ? WHERE id = ?',
-        [dto.clubId, dto.firstName, dto.lastName, dto.dateOfBirth, dto.email, id],
-        (err, results) => {
-          if (err || ('affectedRows' in results && results.affectedRows === 0)) {
-            reject(new BadRequestException('Invalid ID from clients'));
-          }
-          resolve(results);
-        },
-      );
-    });
+  async create(params: Record<string, string>, dto: CreateClientDto): Promise<ClientEntity> {
+    this.compareIds(Number(params.clubId), dto.clubId);
+    return this.clientRepository.save(dto);
   }
 
-  async remove(clubId: string, id: string) {
-    return new Promise((resolve, reject) => {
-      database.query('DELETE FROM sports.clients WHERE clubId = ? AND id = ?', [clubId, id], (err, results) => {
-        if (err || ('affectedRows' in results && results.affectedRows === 0)) {
-          reject(new BadRequestException('Can Not Found Client for Remove!'));
-        }
-        resolve(results);
-      });
-    });
+  async update(params: Record<string, string>, dto: UpdateClientDto): Promise<ClientEntity> {
+    this.compareIds(Number(params.id), dto.id);
+    this.compareIds(Number(params.clientId), dto.id);
+    const client: ClientEntity = await this.getOne(dto.clubId, dto.id);
+    this.clientRepository.merge(client, dto);
+    return this.clientRepository.save(client);
+  }
+
+  async remove(clubId: number, id: number): Promise<void> {
+    await this.getOne(clubId, id);
+    await this.clientRepository.delete(id);
+  }
+
+  private compareIds(id: number, dtoId: number): void {
+    if (id !== Number(dtoId)) {
+      throw new BadRequestException('Id Client does not match');
+    }
   }
 }
 
-export const clientService = new ClientService();
+export const clientService: ClientService = new ClientService();
