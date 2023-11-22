@@ -1,8 +1,20 @@
-import { RowDataPacket } from 'mysql2';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ClientEntity } from './client.entity';
 
-export interface ClubEntity extends RowDataPacket {
+@Entity({ name: 'clubs' })
+export class ClubEntity {
+  @PrimaryGeneratedColumn()
   id: number;
+
+  @Column('varchar', { length: 255, nullable: false })
   name: string;
-  address: string;
+
+  @Column('varchar', { length: 255, nullable: false })
   description: string;
+
+  @Column('varchar', { length: 255, nullable: false })
+  address: string;
+
+  @OneToMany(() => ClientEntity, (client: ClientEntity) => client.club)
+  clients: ClientEntity[];
 }

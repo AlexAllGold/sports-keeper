@@ -1,72 +1,46 @@
-import { ResultSetHeader } from 'mysql2';
-import { database } from '../config/database';
-import { BadRequestException } from '../utils/exceptions/BadRequestException';
+import { Repository } from 'typeorm';
+import { Database } from '../config/database';
 import { CreateClubDto } from '../dtos/createClub.dto';
 import { ClubEntity } from '../entities/club.entity';
+import { BadRequestException } from '../utils/exceptions/BadRequestException';
+import { UpdateClubDto } from '../dtos/updateClub.dto';
 
 class ClubService {
+  clubRepository: Repository<ClubEntity>;
+
+  constructor() {
+    this.clubRepository = Database.dataSource.getRepository(ClubEntity);
+  }
+
   async getAll(): Promise<ClubEntity[]> {
-    return new Promise((resolve, reject) => {
-      database.query<ClubEntity[]>('SELECT * FROM sports.clubs', (err, results) => {
-        if (err) {
-          reject(new BadRequestException('Can not find any clubs'));
-        }
-        resolve(results);
-      });
-    });
+    return this.clubRepository.find();
   }
 
-  async getOne(id: string): Promise<ClubEntity> {
-    return new Promise((resolve, reject) => {
-      database.query<ClubEntity[]>('SELECT * FROM sports.clubs WHERE id = ?', [id], (err, results) => {
-        if (err || (Array.isArray(results) && results.length === 0)) {
-          reject(new BadRequestException('Can not find this club'));
-        }
-        resolve(results[0]);
-      });
-    });
+  async getOne(id: number): Promise<ClubEntity> {
+    const club: ClubEntity | null = await this.clubRepository.findOneBy({ id });
+    if (club) {
+      return club;
+    }
+    throw new BadRequestException('Can not find this club!');
   }
 
-  async create(dto: CreateClubDto): Promise<number> {
-    return new Promise((resolve, reject) => {
-      database.query<ResultSetHeader>(
-        'INSERT INTO sports.clubs (name, description, address) VALUES (?, ?, ?)',
-        [dto.name, dto.description, dto.address],
-        (err, results) => {
-          if (err) {
-            reject(err);
-          }
-          resolve(results.insertId);
-        },
-      );
-    });
+  async create(dto: CreateClubDto): Promise<ClubEntity> {
+    return this.clubRepository.save(dto);
   }
 
-  async update(id: string, dto: CreateClubDto): Promise<void> {
-    return new Promise((resolve, reject) => {
-      database.query(
-        'UPDATE sports.clubs SET name = ?, description = ?, address = ? WHERE id = ?',
-        [dto.name, dto.description, dto.address, id],
-        (err, results) => {
-          if (err || ('affectedRows' in results && results.affectedRows === 0)) {
-            reject(new BadRequestException('You cannot update'));
-          }
-          resolve();
-        },
-      );
-    });
+  async update(id: number, dto: UpdateClubDto): Promise<ClubEntity> {
+    if (id !== Number(dto.id)) {
+      throw new BadRequestException('Id Club does not match');
+    }
+    const club: ClubEntity = await this.getOne(id);
+    this.clubRepository.merge(club, dto);
+    return this.clubRepository.save(club);
   }
 
-  async remove(id: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      database.query('DELETE FROM sports.clubs WHERE id = ?', [id], (err, results) => {
-        if (err || ('affectedRows' in results && results.affectedRows === 0)) {
-          reject(new BadRequestException('Can Not Found Club for Remove!'));
-        }
-        resolve();
-      });
-    });
+  async remove(id: number): Promise<void> {
+    await this.getOne(id);
+    await this.clubRepository.delete(id);
   }
 }
 
-export const clubService = new ClubService();
+export const clubService: ClubService = new ClubService();

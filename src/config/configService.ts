@@ -22,7 +22,7 @@ class ConfigService {
     return this.#getEnv('HOST');
   }
 
-  getPort():string | undefined {
+  getPort(): string | undefined {
     return this.#getEnv('PORT');
   }
 

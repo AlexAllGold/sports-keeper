@@ -1,27 +1,39 @@
-import mysql, { Pool } from 'mysql2';
+import { DataSource, DataSourceOptions } from 'typeorm';
 import { configService } from './configService';
 import { logger } from '../utils/logger';
+import { ClubEntity } from '../entities/club.entity';
+import { ClientEntity } from '../entities/client.entity';
 
-class Database {
-  getDb(): Pool {
-    const pool = mysql.createPool({
+export class Database {
+  static dataSource: DataSource;
+
+  static {
+    const options: DataSourceOptions = {
+      type: 'mysql',
+      connectorPackage: 'mysql2',
       host: configService.getHost(),
       port: Number(configService.getDbPort()),
-      user: configService.getDbUser(),
+      username: configService.getDbUser(),
       password: configService.getDbPass(),
       database: configService.getNameDb(),
-      connectionLimit: 10,
-    });
-    pool.getConnection((err, connection) => {
-      if (err) {
-        logger.error('Error connecting to MySQL:', err);
-      } else {
+      entities: [ClubEntity, ClientEntity],
+      migrations: ['migrations/*.ts'],
+      logging: true,
+      synchronize: true,
+    };
+    this.dataSource = new DataSource(options);
+  }
+
+  static initialize(): void {
+    this.dataSource.initialize()
+      .then(() => {
         logger.info('Connected to MySQL');
-        connection.release();
-      }
-    });
-    return pool;
+      })
+      .catch((err: Error) => {
+        logger.error(`Error connecting to MySQL:${err.message}`);
+        process.exit(1);
+      });
   }
 }
 
-export const database = new Database().getDb();
+export default Database.dataSource;
