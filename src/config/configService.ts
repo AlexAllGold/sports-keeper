@@ -22,7 +22,9 @@ class ConfigService {
     return this.#getEnv('HOST');
   }
 
-  getPort():string | undefined { return this.#getEnv('PORT'); }
+  getPort(): string | undefined {
+    return this.#getEnv('PORT');
+  }
 
   #getEnv(nameEnv: string):string | undefined {
     if (process.env[nameEnv]) {
