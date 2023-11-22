@@ -17,6 +17,7 @@ export class Database {
       password: configService.getDbPass(),
       database: configService.getNameDb(),
       entities: [ClubEntity, ClientEntity],
+      migrations: ['migrations/*.ts'],
       logging: true,
       synchronize: true,
     };
@@ -34,3 +35,5 @@ export class Database {
       });
   }
 }
+
+export default Database.dataSource;
