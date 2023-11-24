@@ -17,10 +17,11 @@ export class Database {
       password: configService.getDbPass(),
       database: configService.getNameDb(),
       entities: [ClubEntity, ClientEntity],
-      migrations: ['migrations/*.ts'],
+      migrations: ['../../migrations/*.ts'],
       logging: true,
       synchronize: true,
     };
+
     this.dataSource = new DataSource(options);
   }
 
