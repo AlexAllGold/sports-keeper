@@ -6,7 +6,8 @@
     ".eslintignore"
   ],
   "plugins": [
-    "@nx"
+    "@nx",
+    "@typescript-eslint"
   ],
   "overrides": [
     {
@@ -50,7 +51,7 @@
         "*.jsx"
       ],
       "extends": [
-        "plugin:@nx/javascript"
+        "plugin:@nx/javascript", "airbnb-base", "plugin:@typescript-eslint/recommended-type-checked", "eslint:recommended"
       ],
       "rules": {}
     }

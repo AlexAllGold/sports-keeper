@@ -1,10 +1,46 @@
 {
-  "extends": ["plugin:@nx/react", "../../.eslintrc.json"],
+  "extends": ["plugin:@nx/react", "airbnb", "airbnb/hooks", "../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+      "rules": {
+        "no-param-reassign": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "default-param-last": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/no-extraneous-dependencies": "off",
+        "no-unused-vars": "off",
+        "indent": "off",
+        "max-len": "off",
+        "import/prefer-default-export": "off",
+        "import/named": "off",
+        "class-methods-use-this": "off",
+        "import/no-cycle": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "linebreak-style": [
+          "error",
+          "windows"
+        ],
+        "object-curly-newline": [
+          "error",
+          {
+            "ObjectExpression": {
+              "multiline": true
+            },
+            "ObjectPattern": {
+              "multiline": true
+            },
+            "ImportDeclaration": {
+              "multiline": true,
+              "minProperties": 7
+            },
+            "ExportDeclaration": "never"
+          }
+        ]
+      }
     },
     {
       "files": ["*.ts", "*.tsx"],

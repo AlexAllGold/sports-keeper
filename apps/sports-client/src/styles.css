@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: Arial serif;
+  }
+
+}
+
+@layer utilities {
+  a {
+    display: flex;
+    position: relative;
+    align-items: center;
+  }
+
+  .p-link-style {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  }
+
+  .link-bar-hover-style {
+    width: 190px;
+  }
+
+  .link-bar-hover-style:hover {
+    background-color: #EBEFFD;
+    border-radius: 10px;
+    color: #3F68FD;
+  }
+
+  .Input-style {
+    margin: auto;
+    width: 250px;
+    border: #CAD0D8 1px solid;
+    border-radius: 8px;
+  }
+
+  .Input-style:hover {
+    padding-left: 10px;
+    border-color: #3F68FD;
+    background-color: #EBEFFD;
+  }
+
+  .button-style {
+    background-color: #0C42FC;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+  }
+
+  .button-style:hover {
+    background: mediumblue;
+  }
+}

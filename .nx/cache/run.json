@@ -1,8 +1,8 @@
 {
   "run": {
     "command": "nx run-many --targets=lint",
-    "startTime": "2023-11-24T17:44:57.027Z",
-    "endTime": "2023-11-24T17:45:01.112Z",
+    "startTime": "2023-12-31T10:44:57.057Z",
+    "endTime": "2023-12-31T10:45:02.419Z",
     "inner": false
   },
   "tasks": [
@@ -10,20 +10,9 @@
       "taskId": "sports-client-e2e:lint",
       "target": "lint",
       "projectName": "sports-client-e2e",
-      "hash": "4151010554933978297",
-      "startTime": "2023-11-24T17:44:57.158Z",
-      "endTime": "2023-11-24T17:44:59.240Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "sports-client:lint",
-      "target": "lint",
-      "projectName": "sports-client",
-      "hash": "10871256024540296657",
-      "startTime": "2023-11-24T17:44:57.050Z",
-      "endTime": "2023-11-24T17:44:59.905Z",
+      "hash": "176954347251564901",
+      "startTime": "2023-12-31T10:44:57.241Z",
+      "endTime": "2023-12-31T10:44:59.976Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
@@ -32,20 +21,31 @@
       "taskId": "sports-server:lint",
       "target": "lint",
       "projectName": "sports-server",
-      "hash": "130281230445189128",
-      "startTime": "2023-11-24T17:44:57.112Z",
-      "endTime": "2023-11-24T17:45:00.286Z",
+      "hash": "14531339394397199270",
+      "startTime": "2023-12-31T10:44:57.191Z",
+      "endTime": "2023-12-31T10:45:00.921Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
     },
     {
+      "taskId": "sports-client:lint",
+      "target": "lint",
+      "projectName": "sports-client",
+      "hash": "13976678635962973861",
+      "startTime": "2023-12-31T10:44:57.086Z",
+      "endTime": "2023-12-31T10:45:01.543Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    },
+    {
       "taskId": "sports-server-e2e:lint",
       "target": "lint",
       "projectName": "sports-server-e2e",
-      "hash": "6788534357823156985",
-      "startTime": "2023-11-24T17:44:59.245Z",
-      "endTime": "2023-11-24T17:45:01.110Z",
+      "hash": "15427915944173650247",
+      "startTime": "2023-12-31T10:44:59.981Z",
+      "endTime": "2023-12-31T10:45:02.415Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
