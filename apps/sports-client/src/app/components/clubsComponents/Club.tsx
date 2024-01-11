@@ -11,11 +11,13 @@ function Club() {
   useEffect(() => {
     dispatch(fetchClub(id));
   }, [dispatch, id]);
+
+
   return (
-    <div>
-      {loading && <h1>Loading...</h1>}
-      {error && <h1>{error}</h1>}
-      {currentClub && <h1>Name: {currentClub.name}</h1>}
+			<div>
+				{loading && <h1>Loading...</h1>}
+				{error && <h1>{error}</h1>}
+				{currentClub && <h1>Name: {currentClub.name}</h1>}
     </div>
   );
 }

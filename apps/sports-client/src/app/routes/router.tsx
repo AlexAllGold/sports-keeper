@@ -19,7 +19,8 @@ export function Router() {
           <Route path='clubs/:id' element={<Club />} />
           <Route path='clubs/:id/clients' element={<Clients />} />
           <Route path='clubs/:id/clients/:id' element={<Client />} />
-          <Route path='form' element={<ClubsForm />} />
+          <Route path='clubs/create' element={<ClubsForm />} />
+          <Route path='clubs/:id/update' element={<ClubsForm />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>

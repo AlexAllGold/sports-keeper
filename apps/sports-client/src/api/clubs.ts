@@ -31,7 +31,7 @@ export const createClub = createAsyncThunk(
   async (club: CreateClub, thunkAPI) => {
     const {name, description, address} = club;
     try {
-      const response = await axios.post<IClub>('http://ocalhost:8000/api/clubs', {
+      const response = await axios.post<CreateClub>('http://localhost:8000/api/clubs', {
         name,
         description,
         address,
@@ -39,6 +39,36 @@ export const createClub = createAsyncThunk(
       return response.data
     } catch (err) {
       return thunkAPI.rejectWithValue('Не удалось создать Club   ')
+    }
+  }
+)
+
+export const updateClub = createAsyncThunk(
+  'club/updateClub',
+  async (club: IClub, thunkAPI) => {
+    const {id, name, description, address} = club;
+    try {
+      const response = await axios.put<IClub>(`http://localhost:8000/api/clubs/${id}`, {
+        id,
+        name,
+        description,
+        address,
+      })
+      return response.data
+    } catch (err) {
+      return thunkAPI.rejectWithValue(`Не удалось обновить Club   ${  err}`)
+    }
+  }
+)
+export const removeClub = createAsyncThunk(
+  'club/remove',
+  async (id: string, thunkAPI) => {
+    try {
+
+      const response = await axios.delete<IClub>(`http://localhost:8000/api/clubs/${id}`)
+      return response.data
+    } catch (err) {
+      return thunkAPI.rejectWithValue(`Не удалось удалить Club${id}`)
     }
   }
 )

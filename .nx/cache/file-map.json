@@ -502,7 +502,7 @@
         },
         {
           "file": "apps/sports-client/src/api/clubs.ts",
-          "hash": "16026518367202373208",
+          "hash": "14974172428616743709",
           "deps": [
             "npm:axios",
             "npm:@reduxjs/toolkit"
@@ -574,7 +574,7 @@
         },
         {
           "file": "apps/sports-client/src/app/components/clubsComponents/Club.tsx",
-          "hash": "8939874435168215473",
+          "hash": "984040194332874573",
           "deps": [
             "npm:react",
             "npm:react-router-dom"
@@ -582,9 +582,10 @@
         },
         {
           "file": "apps/sports-client/src/app/components/clubsComponents/Clubs.tsx",
-          "hash": "11971278087519246876",
+          "hash": "7579119703450979497",
           "deps": [
-            "npm:react"
+            "npm:react",
+            "npm:react-router-dom"
           ]
         },
         {
@@ -596,7 +597,7 @@
         },
         {
           "file": "apps/sports-client/src/app/components/registrationsForm/ClubsForm.tsx",
-          "hash": "6992444696924095988",
+          "hash": "13138967386880898394",
           "deps": [
             "npm:react",
             "npm:@hookform/resolvers",
@@ -629,7 +630,7 @@
         },
         {
           "file": "apps/sports-client/src/app/routes/router.tsx",
-          "hash": "11275377466860263973",
+          "hash": "3136034254284356430",
           "deps": [
             "npm:react",
             "npm:react-router-dom"
@@ -696,7 +697,7 @@
         },
         {
           "file": "apps/sports-client/src/store/reducer/clubsSlice.ts",
-          "hash": "13469087747706074993",
+          "hash": "1329281261969201324",
           "deps": [
             "npm:@reduxjs/toolkit"
           ]

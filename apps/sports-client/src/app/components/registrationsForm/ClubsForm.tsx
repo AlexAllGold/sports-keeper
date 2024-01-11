@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { createClub } from '../../../api/clubs';
+import { createClub, fetchClub, updateClub } from '../../../api/clubs';
 import { useAppDispatch } from '../../../hooks/redux';
 import { CreateClub } from '../../../models/IClub';
 
@@ -15,21 +15,42 @@ const schema = yup
 	})
 	.required();
 
+
 export function ClubsForm() {
+	const { id: clubId } = useParams();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const { register, handleSubmit, formState: { errors } } = useForm<CreateClub>(
-		{ resolver: yupResolver(schema) });
+	const { register, handleSubmit, setValue, formState: { errors } } = useForm<CreateClub>(
+		{
+			resolver: yupResolver<CreateClub>(schema),
+			defaultValues: {
+				name: '',
+				address: '',
+				description: ''
+			}
+		});
 
+	useEffect( () => {
+		if (clubId) {
+			(async function async() {
+				const data = await dispatch(fetchClub(clubId)).unwrap()
+				setValue('name', data.name)
+				setValue('address', data.address)
+				setValue('description', data.description)
+			})()
+		}
+	},[dispatch, clubId, setValue])
 	const save: SubmitHandler<CreateClub> = async (model) => {
-		const data = await dispatch(createClub(model)).unwrap();
+		const id: number = Number(clubId);
+		const data = await dispatch(clubId ? updateClub({ id, ...model}) : createClub(model)).unwrap();
 		navigate(`/clubs/${data.id}`);
 	};
+
 
 	return (
 		<div className='flex flex-col h-full p-10 border-t border-x border-[#CAD0D8] rounded-t-xl'>
 			<h1 className='text-3xl font-medium'>
-				Register Text
+				{clubId ? 'Edit' : 'Register'} Club
 			</h1>
 			<form onSubmit={handleSubmit(save)}
 						className='flex flex-col h-full w-96 py-20 m-auto border border-[#CAD0D8] rounded-xl'>
