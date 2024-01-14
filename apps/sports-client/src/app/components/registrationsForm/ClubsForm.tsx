@@ -43,6 +43,8 @@ export function ClubsForm() {
 	const save: SubmitHandler<CreateClub> = async (model) => {
 		const id: number = Number(clubId);
 		const data = await dispatch(clubId ? updateClub({ id, ...model}) : createClub(model)).unwrap();
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		navigate(`/clubs/${data.id}`);
 	};
 

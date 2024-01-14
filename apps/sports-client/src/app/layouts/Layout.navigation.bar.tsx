@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import { Bar } from '../components/bar/Bar';
 import Header from '../components/header/Header';
 
@@ -12,6 +13,7 @@ function LayoutNavigationBar() {
         <React.Suspense fallback='Loading...'>
           <Outlet />
         </React.Suspense>
+        <ToastContainer/>
       </div>
     </div>
   );

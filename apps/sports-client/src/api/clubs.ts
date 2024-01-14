@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import { CreateClub, IClub } from '../models/IClub';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const fetchAllClubs = createAsyncThunk(
   'club/fetchAll',
@@ -36,9 +38,11 @@ export const createClub = createAsyncThunk(
         description,
         address,
       })
+      toast.success('Создан новый Клуб', {});
       return response.data
     } catch (err) {
-      return thunkAPI.rejectWithValue('Не удалось создать Club   ')
+      toast.error(`Не удалось создать Club`, {});
+      return thunkAPI.rejectWithValue('Не удалось создать Club');
     }
   }
 )
@@ -54,9 +58,11 @@ export const updateClub = createAsyncThunk(
         description,
         address,
       })
+      toast.success('Клуб обновлен!', {});
       return response.data
     } catch (err) {
-      return thunkAPI.rejectWithValue(`Не удалось обновить Club   ${  err}`)
+      toast.error(`Не удалось обновить Club`, {});
+      return thunkAPI.rejectWithValue(`Не удалось обновить Club ${err}`);
     }
   }
 )
@@ -66,8 +72,10 @@ export const removeClub = createAsyncThunk(
     try {
 
       const response = await axios.delete<IClub>(`http://localhost:8000/api/clubs/${id}`)
+      toast.success('Клуб Успешно Удален!', {});
       return response.data
     } catch (err) {
+      toast.error(`Не удалось удалить Club`, {});
       return thunkAPI.rejectWithValue(`Не удалось удалить Club${id}`)
     }
   }

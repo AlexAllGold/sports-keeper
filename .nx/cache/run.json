@@ -1,29 +1,18 @@
 {
   "run": {
     "command": "nx run-many --targets=lint",
-    "startTime": "2024-01-03T14:50:20.985Z",
-    "endTime": "2024-01-03T14:50:21.025Z",
+    "startTime": "2024-01-11T19:00:56.517Z",
+    "endTime": "2024-01-11T19:01:00.764Z",
     "inner": false
   },
   "tasks": [
-    {
-      "taskId": "sports-client:lint",
-      "target": "lint",
-      "projectName": "sports-client",
-      "hash": "12800094498792687634",
-      "startTime": "2024-01-03T14:50:21.001Z",
-      "endTime": "2024-01-03T14:50:21.008Z",
-      "params": "",
-      "cacheStatus": "local-cache-hit",
-      "status": 0
-    },
     {
       "taskId": "sports-server:lint",
       "target": "lint",
       "projectName": "sports-server",
       "hash": "14531339394397199270",
-      "startTime": "2024-01-03T14:50:21.007Z",
-      "endTime": "2024-01-03T14:50:21.009Z",
+      "startTime": "2024-01-11T19:00:56.590Z",
+      "endTime": "2024-01-11T19:00:56.593Z",
       "params": "",
       "cacheStatus": "local-cache-hit",
       "status": 0
@@ -33,8 +22,8 @@
       "target": "lint",
       "projectName": "sports-client-e2e",
       "hash": "176954347251564901",
-      "startTime": "2024-01-03T14:50:21.012Z",
-      "endTime": "2024-01-03T14:50:21.014Z",
+      "startTime": "2024-01-11T19:00:56.599Z",
+      "endTime": "2024-01-11T19:00:56.601Z",
       "params": "",
       "cacheStatus": "local-cache-hit",
       "status": 0
@@ -44,10 +33,21 @@
       "target": "lint",
       "projectName": "sports-server-e2e",
       "hash": "15427915944173650247",
-      "startTime": "2024-01-03T14:50:21.019Z",
-      "endTime": "2024-01-03T14:50:21.023Z",
+      "startTime": "2024-01-11T19:00:56.610Z",
+      "endTime": "2024-01-11T19:00:56.611Z",
       "params": "",
       "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "sports-client:lint",
+      "target": "lint",
+      "projectName": "sports-client",
+      "hash": "16269656853913382704",
+      "startTime": "2024-01-11T19:00:56.538Z",
+      "endTime": "2024-01-11T19:01:00.764Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
       "status": 0
     }
   ]
