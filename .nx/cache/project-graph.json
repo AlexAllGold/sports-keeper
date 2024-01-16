@@ -14543,11 +14543,6 @@
       },
       {
         "source": "sports-client",
-        "target": "npm:redux",
-        "type": "static"
-      },
-      {
-        "source": "sports-client",
         "target": "npm:@nx/react",
         "type": "static"
       },

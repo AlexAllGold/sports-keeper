@@ -1,5 +1,5 @@
 export interface IClub {
-  id: number,
+  id?: number,
   name: string,
   address: string,
   description: string

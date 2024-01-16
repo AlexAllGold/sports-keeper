@@ -1,8 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import clubReducer from './reducer/clubsSlice'
+import clientReducer from './reducer/clientsSlice'
 
 export const rootReducer = combineReducers(
-	{clubReducer});
+	{club : clubReducer, client: clientReducer});
 
 export const setupStore = () => configureStore({ reducer : rootReducer})
 

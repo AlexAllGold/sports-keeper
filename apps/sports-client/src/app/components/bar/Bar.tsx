@@ -32,7 +32,7 @@ export function Bar() {
             </svg>
             <p className='p-link-style'>Clubs</p>
           </Link>
-          <Link className='link-bar-hover-style flex py-2' to='/clients'>
+          <Link className='link-bar-hover-style flex py-2' to='/clubs/1/clients'>
             <svg className='ml-2 w-5 h-5 text-gray-800 dark:text-white' aria-hidden='true'
                  xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'>
               <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1'

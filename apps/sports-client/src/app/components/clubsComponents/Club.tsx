@@ -6,7 +6,7 @@ import { fetchClub } from '../../../api/clubs';
 function Club() {
   const dispatch = useAppDispatch();
   const { id } = useParams();
-  const { currentClub, error, loading } = useAppSelector(state => state.clubReducer);
+  const { currentClub, error, loading } = useAppSelector(state => state.club);
 
   useEffect(() => {
     dispatch(fetchClub(id));

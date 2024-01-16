@@ -6,16 +6,19 @@ import { fetchAllClubs, removeClub } from '../../../api/clubs';
 export function Clubs() {
   const navigate = useNavigate()
   const dispatch = useAppDispatch();
-  const {clubs, error, loading} = useAppSelector(state => state.clubReducer);
+  const {clubs, error, loading} = useAppSelector(state => state.club);
 
   useEffect(() => {
     dispatch(fetchAllClubs())
   }, [dispatch]);
 
-	const handleEditClick = (id: string) => () => {
+	const handleEditClick = (id: number) => () => {
 		navigate(`/clubs/${id}/update`);
 	};
-  const handleRemove = (id: string) => async () => {
+  const handleAllClientClick = (clubId: number) => () => {
+    navigate(`/clubs/${clubId}/clients`);
+  };
+  const handleRemove = (id: number) => async () => {
 		await dispatch(removeClub(id.toString())).unwrap();
     dispatch(fetchAllClubs())
   };
@@ -51,6 +54,7 @@ export function Clubs() {
                 <th>Name</th>
                 <th>Description</th>
                 <th>Address</th>
+                <th>Settings</th>
               </tr>
               </thead>
               <tbody className='w-full'>
@@ -77,6 +81,12 @@ export function Clubs() {
 															onClick={handleRemove(club.id)}>
                         Remove
 											</button>
+                    </td>
+                    <td>
+                      <button type='button' className='button-style relative bg-[#0C42FC] w-10'
+                              onClick={handleAllClientClick(club.id)}>
+                        All
+                      </button>
                     </td>
                   </tr>
                 ))

@@ -13,8 +13,8 @@ function LayoutNavigationBar() {
         <React.Suspense fallback='Loading...'>
           <Outlet />
         </React.Suspense>
-        <ToastContainer/>
       </div>
+      <ToastContainer/>
     </div>
   );
 }
