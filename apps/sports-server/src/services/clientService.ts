@@ -30,7 +30,7 @@ class ClientService {
   }
 
   async update(params: Record<string, string>, dto: UpdateClientDto): Promise<ClientEntity> {
-    this.compareIds(Number(params.id), dto.id);
+    this.compareIds(Number(params.clubId), dto.clubId);
     this.compareIds(Number(params.clientId), dto.id);
     const client: ClientEntity = await this.getOne(dto.clubId, dto.id);
     this.clientRepository.merge(client, dto);
