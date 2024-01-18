@@ -19,8 +19,8 @@ const schema = yup
 
 
 export function ClientsForm() {
-  const { clubId, clientId } = useParams();
-  const id = Number(clientId);
+  const { clubId, clientId: id } = useParams();
+  const idAsNumber = parseInt(id as string, 10);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { register, handleSubmit, setValue, formState: { errors } } = useForm<CreateClient>(
@@ -30,7 +30,7 @@ export function ClientsForm() {
         firstName: '',
         lastName: '',
         email: '',
-        clubId: 0,
+        clubId: 1,
         dateOfBirth: new Date(),
       }
     });
@@ -38,7 +38,7 @@ export function ClientsForm() {
   useEffect( () => {
     if (id) {
       (async () => {
-        const data = await dispatch(fetchClient({ clubId, id })).unwrap()
+        const data = await dispatch(fetchClient({ clubId, id: idAsNumber })).unwrap()
         setValue('firstName', data.firstName)
         setValue('lastName', data.lastName)
         setValue('email', data.email)
@@ -46,9 +46,9 @@ export function ClientsForm() {
         setValue('dateOfBirth', data.dateOfBirth)
       })()
     }
-  },[dispatch, clubId, setValue, id])
+  },[dispatch, clubId, setValue, id, idAsNumber])
   const save: SubmitHandler<CreateClient> = async (model) => {
-    const data = await dispatch(id ? updateClient({ id, ...model}) : createClient(model)).unwrap();
+    const data = await dispatch(id ? updateClient({ id: idAsNumber, ...model}) : createClient(model)).unwrap();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     navigate(`/clubs/${data.clubId}/clients/${data.id}`);

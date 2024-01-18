@@ -21,6 +21,8 @@ export function Clients() {
     navigate(`/clubs/${clubId}/clients/${id}`);
   };
   const handleRemove = (id: number | undefined) => async () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     await dispatch(removeClient({ clubId, id })).unwrap();
     dispatch(fetchAllClients(clubId))
   };
@@ -58,26 +60,25 @@ export function Clients() {
                 <th>Email</th>
                 <th>Club Id</th>
                 <th>Birth</th>
-                <th>Setting</th>
               </tr>
               </thead>
               <tbody className='w-full'>
               {
                 clients.map((client) => (
-                  <tr className='flex w-full h-10' key={client.id}>
-                    <td className='w-1/5 border-t border-x border-[#CAD0D8]'>
+                  <tr className='flex h-10' key={client.id}>
+                    <td className='w-1/6 border-t border-x border-[#CAD0D8]'>
                       {client.firstName}
                     </td>
-                    <td className='w-1/5 border-t border-x border-[#CAD0D8]'>
+                    <td className='w-1/6 border-t border-x border-[#CAD0D8]'>
                       {client.lastName}
                     </td>
-                    <td className='w-1/5 border-t border-x border-[#CAD0D8]'>
+                    <td className='w-1/6 border-t border-x border-[#CAD0D8]'>
                       {client.email}
                     </td>
-                    <td className='w-10 border-t border-x border-[#CAD0D8]'>
+                    <td className='w-1/6 border-t border-x border-[#CAD0D8]'>
                       {client.clubId}
                     </td>
-                    <td className='w-1/5 border-t border-x border-[#CAD0D8]'>
+                    <td className='w-1/6 border-t border-x border-[#CAD0D8]'>
                       {client.dateOfBirth.toLocaleString()}
                     </td>
                     <td>
@@ -95,7 +96,7 @@ export function Clients() {
                     <td>
                       <button type='button' className='button-style relative bg-[#0C42FC] w-10'
                               onClick={handleAllClientClick(client.id)}>
-                        All
+                        About
                       </button>
                     </td>
                   </tr>

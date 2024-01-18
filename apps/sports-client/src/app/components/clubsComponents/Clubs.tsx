@@ -72,19 +72,19 @@ export function Clubs() {
                     </td>
                     <td>
 											<button type='button' className='button-style relative bg-[#0C42FC] w-10'
-															onClick={handleEditClick(club.id)}>
+															onClick={handleEditClick(club.id as number)}>
 												Edit
 											</button>
                     </td>
                     <td>
 											<button type='button' className='button-style relative bg-[#0C42FC] w-10'
-															onClick={handleRemove(club.id)}>
+															onClick={handleRemove(club.id as number)}>
                         Remove
 											</button>
                     </td>
                     <td>
                       <button type='button' className='button-style relative bg-[#0C42FC] w-10'
-                              onClick={handleAllClientClick(club.id)}>
+                              onClick={handleAllClientClick(club.id as number)}>
                         All
                       </button>
                     </td>
