@@ -1,34 +1,17 @@
 import React, { useEffect } from 'react';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useNavigate, useParams } from 'react-router-dom';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler } from 'react-hook-form';
 import { createClub, fetchClub, updateClub } from '../../../api/clubs';
 import { useAppDispatch } from '../../../hooks/redux';
 import { CreateClub } from '../../../models/IClub';
-
-const schema = yup
-	.object({
-		name: yup.string().required(),
-		address: yup.string().required(),
-		description: yup.string().required(),
-	})
-	.required();
+import { useClubForm } from '../../../hooks/useClubForm';
 
 
 export function ClubsForm() {
 	const { id: clubId } = useParams();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const { register, handleSubmit, setValue, formState: { errors } } = useForm<CreateClub>(
-		{
-			resolver: yupResolver<CreateClub>(schema),
-			defaultValues: {
-				name: '',
-				address: '',
-				description: ''
-			}
-		});
+	const { register, handleSubmit, setValue, formState: { errors } } = useClubForm();
 
 	useEffect( () => {
 		if (clubId) {

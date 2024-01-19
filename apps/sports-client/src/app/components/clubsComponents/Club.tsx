@@ -1,17 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { fetchClub } from '../../../api/clubs';
+import { useClub } from '../../../hooks/useClub';
 
 function Club() {
-  const dispatch = useAppDispatch();
   const { id } = useParams();
-  const { currentClub, error, loading } = useAppSelector(state => state.club);
-
-  useEffect(() => {
-    dispatch(fetchClub(id));
-  }, [dispatch, id]);
-
+  const { currentClub, loading, error} = useClub(id);
 
   return (
 			<div>

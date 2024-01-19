@@ -1,39 +1,17 @@
 import React, { useEffect } from 'react';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useNavigate, useParams } from 'react-router-dom';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler } from 'react-hook-form';
 import { createClient, fetchClient, updateClient } from '../../../api/clients';
 import { useAppDispatch } from '../../../hooks/redux';
 import { CreateClient } from '../../../models/IClient';
-
-const schema = yup
-  .object({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
-    email: yup.string().required(),
-    clubId: yup.number().required(),
-    dateOfBirth: yup.date().required()
-  })
-  .required();
-
+import { useClientForm } from '../../../hooks/useClientForm';
 
 export function ClientsForm() {
-  const { clubId, clientId: id } = useParams();
+  const { clubId , clientId: id } = useParams();
   const idAsNumber = parseInt(id as string, 10);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm<CreateClient>(
-    {
-      resolver: yupResolver<CreateClient>(schema),
-      defaultValues: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        clubId: 1,
-        dateOfBirth: new Date(),
-      }
-    });
+  const { register, handleSubmit, setValue, formState: { errors } } = useClientForm();
 
   useEffect( () => {
     if (id) {
