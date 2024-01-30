@@ -3,13 +3,12 @@ import * as winston from 'winston';
 /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import MySQLTransport from 'winston-mysql';
-import { configService } from '../config/configService';
 
 const baseLogger = {
-  host: configService.getHost(),
-  user: configService.getDbUser(),
-  password: configService.getDbPass(),
-  database: configService.getNameDb(),
+  host: 'localhost',
+  user: 'root',
+  password: 'localhost',
+  database: 'sports',
   table: 'loggers',
 };
 

@@ -1,16 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { useAppDispatch } from '../../../hooks/redux';
 import { fetchAllClubs, removeClub } from '../../../api/clubs';
+import { useClub } from '../../../hooks/useClub';
 
 export function Clubs() {
   const navigate = useNavigate()
+  const { clubs, error, loading} = useClub();
   const dispatch = useAppDispatch();
-  const {clubs, error, loading} = useAppSelector(state => state.club);
-
-  useEffect(() => {
-    dispatch(fetchAllClubs())
-  }, [dispatch]);
 
 	const handleEditClick = (id: number) => () => {
 		navigate(`/clubs/${id}/update`);
@@ -23,6 +20,11 @@ export function Clubs() {
     dispatch(fetchAllClubs())
   };
 
+  if (clubs.length === 0) {
+    return (
+      <h1>Not Found this Club</h1>
+    )
+  }
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex flex-col gap-4'>

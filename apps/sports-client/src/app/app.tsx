@@ -8,7 +8,7 @@ const store = setupStore();
 export function App() {
   return (
     <Provider store={store}>
-      <div className='h-full bg-[#EAECF0] p-10'>
+      <div className='flex h-screen w-screen bg-[#EAECF0] p-10'>
         <Router />
     </div>
     </Provider>
