@@ -20,13 +20,8 @@ export function Clubs() {
     dispatch(fetchAllClubs())
   };
 
-  if (clubs.length === 0) {
-    return (
-      <h1>Not Found this Club</h1>
-    )
-  }
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-4 m-5'>
       <div className='flex flex-col gap-4'>
         <div className='flex-col'>
           <div className='flex flex-row justify-between'>
@@ -49,6 +44,12 @@ export function Clubs() {
           </div>
           {loading && <h1>Loading...</h1>}
           {error && <h1>{error}</h1>}
+          {clubs.length === 0 &&
+            <div className='h-full flex justify-center items-center'>
+              <h1>Not Clubs</h1>
+            </div>
+          }
+          {clubs.length > 0 &&
           <div className='flex border border-[#CAD0D8] rounded-md py-1'>
             <table className='flex flex-col w-full'>
               <thead className='flex border-b border-[#CAD0D8]'>
@@ -96,6 +97,7 @@ export function Clubs() {
               </tbody>
             </table>
           </div>
+          }
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Home } from '../components/Home';
 import { Clubs } from '../components/clubsComponents/Clubs';
 import { Clients } from '../components/clientsComponents/Clients';
 import { NotFound } from '../components/NotFound';
@@ -15,7 +14,7 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LayoutNavigationBar />}>
-          <Route index element={<Home />} />
+          <Route index element={<Clubs />} />
           <Route path='clubs' element={<Clubs />} />
           <Route path='clubs/:id' element={<Club />} />
           <Route path='clubs/:clubId/clients' element={<Clients />} />

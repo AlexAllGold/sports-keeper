@@ -6,24 +6,16 @@ export function Bar() {
     <div className='flex flex-col border-r border-[#CAD0D8]'>
       <div className='h-20 flex flex-row'>
         <div className='ml-3 my-5 h-11 p-0.5 w-14 rounded-xl bg-[#0C42FC]'>
-          <img className='h-10 w-16' src='../../../../public/images/logo.png' alt='Logo' />
+          <img className='h-full w-full' src='../../../../public/images/logo.png' alt='Logo' />
         </div>
         <div className='ml-5 my-3'>
-          <p className='font-semibold text-3xl'>
-            Sports-Keeper
+          <p className='font-semibold text-[1.3rem] leading-[1.7rem] p-[0.2rem]'>
+            Sport Keeper
           </p>
         </div>
       </div>
       <div className='flex flex-col'>
         <div className='flex flex-col py-3.5 px-4 gap-4'>
-          <Link className='link-bar-hover-style py-2' to='/'>
-            <svg className='ml-2 w-5 h-5 text-gray-800 dark:text-white' aria-hidden='true'
-                 xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'>
-              <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1'
-                    d='M3 8v10a1 1 0 0 0 1 1h4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5h4a1 1 0 0 0 1-1V8M1 10l9-9 9 9' />
-            </svg>
-            <p className='p-link-style'>Home</p>
-          </Link>
           <Link className='link-bar-hover-style flex py-2' to='/clubs'>
             <svg className='ml-2 w-5 h-5 text-gray-800 dark:text-white' aria-hidden='true'
                  xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 18 18'>
@@ -40,13 +32,6 @@ export function Bar() {
             </svg>
             <p className='p-link-style'>Clients</p>
           </Link>
-          <div className='mt-14 mb-10 border-t border-[#CAD0D8]' />
-
-        </div>
-        <div className='flex flex-col ml-10 m-14'>
-          <p className='text-xl'>
-            Current User
-          </p>
         </div>
       </div>
     </div>

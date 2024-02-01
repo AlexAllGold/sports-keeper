@@ -7,7 +7,7 @@ function LayoutNavigationBar() {
   return (
     <div className="flex h-full w-full rounded-xl bg-white">
       <Bar />
-      <div className='flex flex-col w-full px-6 gap-4 p-5'>
+      <div className='flex flex-col w-full px-6 gap-4'>
         <React.Suspense fallback='Loading...'>
           <Outlet />
         </React.Suspense>

@@ -1,5 +1,11 @@
 import React from 'react';
 
 export function NotFound() {
-	return <h1>Error NotFound Page 404!</h1>
+  return (
+    <div>
+      <img className='h-full w-full'
+           src='../../../public/images/minions404.png'
+           alt='ззз' />
+    </div>
+  );
 }

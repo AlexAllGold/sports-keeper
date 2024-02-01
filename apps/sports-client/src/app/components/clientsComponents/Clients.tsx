@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { fetchAllClients, removeClient } from '../../../api/clients';
 
 
-
 export function Clients() {
   const navigate = useNavigate()
   const { clubId} = useParams();
@@ -27,13 +26,8 @@ export function Clients() {
     dispatch(fetchAllClients(clubId))
   };
 
-  if (clients.length === 0) {
-    return (
-      <h1>Not Found Clients from this Club</h1>
-    )
-  }
-    return (
-      <div className='flex flex-col gap-4'>
+  return (
+    <div className='flex flex-col gap-4 m-5'>
         <div className='flex flex-col gap-4'>
           <div className='flex-col'>
             <div className='flex flex-row justify-between'>
@@ -57,6 +51,12 @@ export function Clients() {
             </div>
             {loading && <h1>Loading...</h1>}
             {error && <h1>{error}</h1>}
+            {clients.length === 0 &&
+              <div className='h-full flex justify-center items-center'>
+                <h1>Not Clients</h1>
+              </div>
+            }
+            {clients.length > 0 &&
             <div className='flex border border-[#CAD0D8] rounded-md py-1'>
               <table className='flex flex-col w-full'>
                 <thead className='flex border-b border-[#CAD0D8]'>
@@ -111,6 +111,7 @@ export function Clients() {
                 </tbody>
               </table>
             </div>
+            }
           </div>
         </div>
       </div>
