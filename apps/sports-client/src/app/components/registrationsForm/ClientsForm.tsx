@@ -34,12 +34,12 @@ export function ClientsForm() {
 
 
   return (
-    <div className='flex flex-col h-full p-10 border-t border-x border-[#CAD0D8] rounded-t-xl'>
-      <h1 className='text-3xl font-medium'>
+    <div className='flex flex-col h-full  pb-14 px-32'>
+      <h1 className='flex m-5 justify-center text-3xl font-medium'>
         {clubId ? 'Edit' : 'Register'} Client
       </h1>
       <form onSubmit={handleSubmit(save)}
-            className='flex flex-col h-full w-96 py-20 m-auto border border-[#CAD0D8] rounded-xl'>
+            className='flex flex-col h-full w-full gap-4 px-14 py-12 m-auto border border-[#CAD0D8] rounded-xl'>
         <input className='Input-style' {...register('firstName')} placeholder='first name'/>
         <p className='text-center text-red-600'>{errors.firstName?.message}</p>
 
@@ -55,7 +55,7 @@ export function ClientsForm() {
         <input className='Input-style' {...register('dateOfBirth')} placeholder='date of birth'/>
         <p className='text-center text-red-600'>{errors.dateOfBirth?.message}</p>
 
-        <button className='button-style m-auto w-32' type='submit' onSubmit={handleSubmit(save)}>Create client</button>
+        <button className='button-style m-auto w-32' type='submit' onSubmit={handleSubmit(save)}>{clubId ? 'Edit' : 'Register'} Client</button>
       </form>
     </div>
   );

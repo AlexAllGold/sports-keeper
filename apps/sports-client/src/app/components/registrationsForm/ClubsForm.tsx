@@ -33,12 +33,12 @@ export function ClubsForm() {
 
 
 	return (
-		<div className='flex flex-col h-full p-10 border-t border-x border-[#CAD0D8] rounded-t-xl'>
-			<h1 className='text-3xl font-medium'>
+		<div className='flex flex-col h-full pb-14 px-32'>
+			<h1 className='flex justify-center text-3xl font-medium my-5'>
 				{clubId ? 'Edit' : 'Register'} Club
 			</h1>
 			<form onSubmit={handleSubmit(save)}
-						className='flex flex-col h-full w-96 py-20 m-auto border border-[#CAD0D8] rounded-xl'>
+						className='flex flex-col h-full w-full py-20 m-auto border border-[#CAD0D8] rounded-xl'>
 				<input className='Input-style' {...register('name')} placeholder='name'/>
 				<p className='text-center text-red-600'>{errors.name?.message}</p>
 
@@ -48,7 +48,7 @@ export function ClubsForm() {
 				 <textarea className='Input-style' {...register('description')} placeholder='description'/>
 				<p className='text-center text-red-600'>{errors.description?.message}</p>
 
-				<button className='button-style m-auto w-32' type='submit' onSubmit={handleSubmit(save)}>Create club</button>
+				<button className='button-style m-auto w-32' type='submit' onSubmit={handleSubmit(save)}>{clubId ? 'Edit' : 'Register'} Club</button>
 			</form>
 		</div>
 	);
