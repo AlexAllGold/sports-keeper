@@ -16,7 +16,7 @@ export function ClientsForm() {
 		handleSubmit,
 		setValue,
 		formState: { errors },
-	} = useClientForm();
+	} = useClientForm(clubId as string);
 
 	useEffect(() => {
 		if (id) {
@@ -41,30 +41,47 @@ export function ClientsForm() {
 		<div className="flex flex-col h-full  pb-10 px-32">
 			<h1 className="flex m-2 justify-center text-3xl font-medium">{clubId ? 'Edit' : 'Register'} Client</h1>
 
-			<form onSubmit={handleSubmit(save)} className="flex flex-col w-full px-14 py-12 m-auto border border-[#CAD0D8] rounded-xl">
-				<p className="pl-2 text-blue-600">First name</p>
-				<input className="Input-style" {...register('firstName')} />
-				<p className="text-center text-red-600">{errors.firstName?.message}</p>
+			<form onSubmit={handleSubmit(save)} className="flex flex-col w-full gap-0.5 py-12 m-auto border border-[#CAD0D8] rounded-xl">
+				<div className="flex flex-row justify-between px-10">
+					<div className="flex flex-col">
+						<div className="flex flex-col">
+							<p className="pl-2 text-blue-600">First name</p>
+							<input className="Input-style" {...register('firstName')} />
+							<p className="text-center text-red-600">{errors.firstName?.message}</p>
+						</div>
 
-				<p className="pl-2 text-blue-600">Last name</p>
-				<input className="Input-style" {...register('lastName')} />
-				<p className="text-center text-red-600">{errors.lastName?.message}</p>
+						<div className="flex flex-col">
+							<p className="pl-2 text-blue-600">Last name</p>
+							<input className="Input-style" {...register('lastName')} />
+							<p className="text-center text-red-600">{errors.lastName?.message}</p>
+						</div>
 
-				<p className="pl-2 text-blue-600">Email</p>
-				<input className="Input-style" {...register('email')} />
-				<p className="text-center text-red-600">{errors.email?.message}</p>
+						<div className="flex flex-col">
+							<p className="pl-2 text-blue-600">Email</p>
+							<input className="Input-style" {...register('email')} />
+							<p className="text-center text-red-600">{errors.email?.message}</p>
+						</div>
+					</div>
 
-				<p className="pl-2 text-blue-600">ID</p>
-				<input className="Input-style" {...register('clubId')} />
-				<p className="text-center text-red-600">{errors.clubId?.message}</p>
+					<div className="flex-col">
+						<p className="pl-2 text-blue-600">ID</p>
+						<input readOnly className="Input-style " {...register('clubId')} />
+						<p className="text-center text-red-600">{errors.clubId?.message}</p>
 
-				<p className="pl-2 text-blue-600">Date of Birthday</p>
-				<input className="Input-style" {...register('dateOfBirth')} />
-				<p className="text-center text-red-600">{errors.dateOfBirth?.message}</p>
+						<p className="pl-2 text-blue-600">Date of Birthday</p>
+						<input className="Input-style" {...register('dateOfBirth')} />
+						<p className="text-center text-red-600">{errors.dateOfBirth?.message}</p>
+					</div>
+				</div>
 
-				<button className="button-style mx-auto mt-5 w-32" type="submit" onSubmit={handleSubmit(save)}>
-					{clubId ? 'Edit' : 'Register'}
-				</button>
+				<div className="flex flex-row">
+					<button className="button-style mx-auto mt-5 w-32" type="submit" onSubmit={handleSubmit(save)}>
+						Cancel
+					</button>
+					<button className="button-style mx-auto mt-5 w-32" type="submit" onSubmit={handleSubmit(save)}>
+						{clubId ? 'Edit' : 'Register'}
+					</button>
+				</div>
 			</form>
 		</div>
 	);
