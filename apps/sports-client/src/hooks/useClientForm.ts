@@ -5,22 +5,23 @@ import { CreateClient } from '../models/IClient';
 
 const schema = yup
 	.object({
-		firstName: yup.string().required(),
-		lastName: yup.string().required(),
-		email: yup.string().required(),
+		firstName: yup.string().required().min(4).max(50),
+		lastName: yup.string().required().min(4).max(50),
+		email: yup.string().email().required(),
 		clubId: yup.number().required(),
-		dateOfBirth: yup.date().required()
+		dateOfBirth: yup.date().required(),
 	})
 	.required();
 
-export const useClientForm = () => useForm<CreateClient>(
-	{
+export const useClientForm = (clubId: string) =>
+	useForm<CreateClient>({
 		resolver: yupResolver<CreateClient>(schema),
+		mode: 'onChange',
 		defaultValues: {
 			firstName: '',
 			lastName: '',
 			email: '',
-			clubId: 1,
+			clubId: parseInt(clubId, 10),
 			dateOfBirth: new Date(),
 		},
 	});
