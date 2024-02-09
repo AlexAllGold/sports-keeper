@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
-import { createClub, fetchClub, updateClub } from '../../../api/clubs';
+import { createClub, fetchAllClubs, fetchClub, updateClub } from '../../../api/clubs';
 import { useAppDispatch } from '../../../hooks/redux';
 import { CreateClub } from '../../../models/IClub';
 import { useClubForm } from '../../../hooks/useClubForm';
@@ -30,6 +30,7 @@ export function ClubsForm() {
 	const save: SubmitHandler<CreateClub> = async (model) => {
 		const id: number = Number(clubId);
 		const data = await dispatch(clubId ? updateClub({ id, ...model }) : createClub(model)).unwrap();
+		dispatch(fetchAllClubs());
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		navigate(`/clubs/${data.id}`);

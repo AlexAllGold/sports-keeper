@@ -37,14 +37,37 @@
 
   .Input-style {
     margin: auto;
-    width: 250px;
+    height: 2.5rem;
+    width: 100vh;
+    padding-left: 0.5rem;
     border: #CAD0D8 1px solid;
     border-radius: 8px;
+    outline-color: #CAD0D8;
   }
 
+
   .Input-style:hover {
-    padding-left: 10px;
     border-color: #3F68FD;
+    background-color: #EBEFFD;
+  }
+
+  .Textarea-style {
+    margin: auto;
+    height: 5rem;
+    width: 100vh;
+    padding-left: 0.5rem;
+    border: #CAD0D8 1px solid;
+    border-radius: 8px;
+    outline-color: #CAD0D8;
+  }
+
+  .Textarea-style:hover {
+    border-color: #3F68FD;
+    background-color: #EBEFFD;
+  }
+
+  .Textarea-style:invalid {
+    border-color: red;
     background-color: #EBEFFD;
   }
 

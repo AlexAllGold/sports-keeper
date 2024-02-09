@@ -10,24 +10,24 @@ import { ClubsForm } from '../components/registrationsForm/ClubsForm';
 import { ClientsForm } from '../components/registrationsForm/ClientsForm';
 
 export function Router() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<LayoutNavigationBar />}>
-          <Route index element={<Clubs />} />
-          <Route path='clubs' element={<Clubs />} />
-          <Route path='clubs/:id' element={<Club />} />
-          <Route path='clubs/:clubId/clients' element={<Clients />} />
-          <Route path='clubs/:clubId/clients/:clientId' element={<Client />} />
-          <Route path='clubs/create' element={<ClubsForm />} />
-          <Route path='clubs/:id/update' element={<ClubsForm />} />
-          <Route path='clients/create' element={<ClientsForm />} />
-          <Route path='clubs/:clubId/clients/:clientId/update' element={<ClientsForm />} />
-          <Route path='*' element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<LayoutNavigationBar />}>
+					<Route index element={<Clubs />} />
+					<Route path="clubs" element={<Clubs />} />
+					<Route path="clubs/:id" element={<Club />} />
+					<Route path="clubs/:clubId/clients" element={<Clients />} />
+					<Route path="clubs/:clubId/clients/:clientId" element={<Client />} />
+					<Route path="clubs/create" element={<ClubsForm />} />
+					<Route path="clubs/:id/update" element={<ClubsForm />} />
+					<Route path="clubs/:clubId/clients/create" element={<ClientsForm />} />
+					<Route path="clubs/:clubId/clients/:clientId/update" element={<ClientsForm />} />
+					<Route path="*" element={<NotFound />} />
+				</Route>
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default Router;

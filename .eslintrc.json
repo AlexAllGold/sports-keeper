@@ -18,6 +18,7 @@
         "*.jsx"
       ],
       "rules": {
+        "no-tabs": "off",
         "@nx/enforce-module-boundaries": [
           "error",
           {

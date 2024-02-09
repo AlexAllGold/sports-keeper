@@ -39,7 +39,7 @@ export function ClientsForm() {
 
 	return (
 		<div className="flex flex-col h-full  pb-10 px-32">
-			<h1 className="flex m-2 justify-center text-3xl font-medium">{clubId ? 'Edit' : 'Register'} Client</h1>
+			<h1 className="flex m-2 justify-center text-3xl font-medium">{id ? 'Edit' : 'Register'} Client</h1>
 
 			<form onSubmit={handleSubmit(save)} className="flex flex-col w-full gap-0.5 py-12 m-auto border border-[#CAD0D8] rounded-xl">
 				<div className="flex flex-row justify-between px-10">
@@ -79,7 +79,7 @@ export function ClientsForm() {
 						Cancel
 					</button>
 					<button className="button-style mx-auto mt-5 w-32" type="submit" onSubmit={handleSubmit(save)}>
-						{clubId ? 'Edit' : 'Register'}
+						{id ? 'Edit' : 'Register'}
 					</button>
 				</div>
 			</form>

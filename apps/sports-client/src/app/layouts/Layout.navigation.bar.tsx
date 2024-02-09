@@ -10,7 +10,7 @@ function LayoutNavigationBar() {
 			<div className="flex">
 				<Bar />
 			</div>
-			<div className="flex flex-col p-6 gap-4">
+			<div className="flex flex-col w-full p-6 gap-4">
 				<React.Suspense fallback="Loading...">
 					<Header />
 					<Outlet />
