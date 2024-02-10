@@ -1,40 +1,18 @@
 {
   "run": {
     "command": "nx run-many --targets=lint",
-    "startTime": "2024-02-10T21:46:36.244Z",
-    "endTime": "2024-02-10T21:46:40.985Z",
+    "startTime": "2024-02-10T21:49:25.873Z",
+    "endTime": "2024-02-10T21:49:25.963Z",
     "inner": false
   },
   "tasks": [
-    {
-      "taskId": "sports-client-e2e:lint",
-      "target": "lint",
-      "projectName": "sports-client-e2e",
-      "hash": "7259374647338336521",
-      "startTime": "2024-02-10T21:46:36.272Z",
-      "endTime": "2024-02-10T21:46:36.415Z",
-      "params": "",
-      "cacheStatus": "local-cache-hit",
-      "status": 0
-    },
     {
       "taskId": "sports-server:lint",
       "target": "lint",
       "projectName": "sports-server",
       "hash": "12194830878201046051",
-      "startTime": "2024-02-10T21:46:36.271Z",
-      "endTime": "2024-02-10T21:46:36.418Z",
-      "params": "",
-      "cacheStatus": "local-cache-hit",
-      "status": 0
-    },
-    {
-      "taskId": "sports-server-e2e:lint",
-      "target": "lint",
-      "projectName": "sports-server-e2e",
-      "hash": "11279437613129697466",
-      "startTime": "2024-02-10T21:46:36.417Z",
-      "endTime": "2024-02-10T21:46:36.421Z",
+      "startTime": "2024-02-10T21:49:25.908Z",
+      "endTime": "2024-02-10T21:49:25.950Z",
       "params": "",
       "cacheStatus": "local-cache-hit",
       "status": 0
@@ -44,10 +22,32 @@
       "target": "lint",
       "projectName": "sports-client",
       "hash": "5536142732644818917",
-      "startTime": "2024-02-10T21:46:36.270Z",
-      "endTime": "2024-02-10T21:46:40.984Z",
+      "startTime": "2024-02-10T21:49:25.904Z",
+      "endTime": "2024-02-10T21:49:25.952Z",
       "params": "",
-      "cacheStatus": "cache-miss",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "sports-server-e2e:lint",
+      "target": "lint",
+      "projectName": "sports-server-e2e",
+      "hash": "11279437613129697466",
+      "startTime": "2024-02-10T21:49:25.951Z",
+      "endTime": "2024-02-10T21:49:25.954Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "sports-client-e2e:lint",
+      "target": "lint",
+      "projectName": "sports-client-e2e",
+      "hash": "7259374647338336521",
+      "startTime": "2024-02-10T21:49:25.908Z",
+      "endTime": "2024-02-10T21:49:25.956Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
       "status": 0
     }
   ]

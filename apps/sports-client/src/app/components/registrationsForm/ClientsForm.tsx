@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { SubmitHandler, Controller } from 'react-hook-form';
-import DatePicker, { registerLocale } from 'react-datepicker';
-import uk from 'date-fns/locale/uk';
+import DatePicker from 'react-datepicker';
 import { createClient, fetchClient, updateClient } from '../../../api/clients';
 import { useAppDispatch } from '../../../hooks/redux';
 import { CreateClient } from '../../../models/IClient';
@@ -11,7 +10,6 @@ import { useClientForm } from '../../../hooks/useClientForm';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export function ClientsForm() {
-	registerLocale('uk', uk);
 	const { clubId, clientId: id } = useParams();
 	const idAsNumber = parseInt(id as string, 10);
 	const dispatch = useAppDispatch();

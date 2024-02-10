@@ -360,46 +360,48 @@
           ]
         }
       ],
-      "sports-client-e2e": [
+      "sports-server-e2e": [
         {
-          "file": "apps/sports-client-e2e/.eslintrc.json",
-          "hash": "9199987846761270635"
+          "file": "apps/sports-server-e2e/.eslintrc.json",
+          "hash": "13800677001662881425"
         },
         {
-          "file": "apps/sports-client-e2e/cypress.config.ts",
-          "hash": "5054456290394884373",
+          "file": "apps/sports-server-e2e/jest.config.ts",
+          "hash": "945820069021308128"
+        },
+        {
+          "file": "apps/sports-server-e2e/project.json",
+          "hash": "18144015569256596211"
+        },
+        {
+          "file": "apps/sports-server-e2e/src/sports-server/sports-server.spec.ts",
+          "hash": "4579662685003779048",
           "deps": [
-            "npm:@nx/cypress",
-            "npm:cypress"
+            "npm:axios"
           ]
         },
         {
-          "file": "apps/sports-client-e2e/project.json",
-          "hash": "2658677793126132503"
+          "file": "apps/sports-server-e2e/src/support/global-setup.ts",
+          "hash": "9380193982331861381"
         },
         {
-          "file": "apps/sports-client-e2e/src/e2e/app.cy.ts",
-          "hash": "1443522782252200883"
+          "file": "apps/sports-server-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
         },
         {
-          "file": "apps/sports-client-e2e/src/fixtures/example.json",
-          "hash": "11785586596216172004"
+          "file": "apps/sports-server-e2e/src/support/test-setup.ts",
+          "hash": "10984585515912236441",
+          "deps": [
+            "npm:axios"
+          ]
         },
         {
-          "file": "apps/sports-client-e2e/src/support/app.po.ts",
-          "hash": "11157016311132186162"
+          "file": "apps/sports-server-e2e/tsconfig.json",
+          "hash": "15443990093475294480"
         },
         {
-          "file": "apps/sports-client-e2e/src/support/commands.ts",
-          "hash": "5397443931564808659"
-        },
-        {
-          "file": "apps/sports-client-e2e/src/support/e2e.ts",
-          "hash": "1054106023200826784"
-        },
-        {
-          "file": "apps/sports-client-e2e/tsconfig.json",
-          "hash": "10740392072068377465"
+          "file": "apps/sports-server-e2e/tsconfig.spec.json",
+          "hash": "14954872453723519891"
         }
       ],
       "sports-server": [
@@ -599,48 +601,46 @@
           ]
         }
       ],
-      "sports-server-e2e": [
+      "sports-client-e2e": [
         {
-          "file": "apps/sports-server-e2e/.eslintrc.json",
-          "hash": "13800677001662881425"
+          "file": "apps/sports-client-e2e/.eslintrc.json",
+          "hash": "9199987846761270635"
         },
         {
-          "file": "apps/sports-server-e2e/jest.config.ts",
-          "hash": "945820069021308128"
-        },
-        {
-          "file": "apps/sports-server-e2e/project.json",
-          "hash": "18144015569256596211"
-        },
-        {
-          "file": "apps/sports-server-e2e/src/sports-server/sports-server.spec.ts",
-          "hash": "4579662685003779048",
+          "file": "apps/sports-client-e2e/cypress.config.ts",
+          "hash": "5054456290394884373",
           "deps": [
-            "npm:axios"
+            "npm:@nx/cypress",
+            "npm:cypress"
           ]
         },
         {
-          "file": "apps/sports-server-e2e/src/support/global-setup.ts",
-          "hash": "9380193982331861381"
+          "file": "apps/sports-client-e2e/project.json",
+          "hash": "2658677793126132503"
         },
         {
-          "file": "apps/sports-server-e2e/src/support/global-teardown.ts",
-          "hash": "5275447082211835490"
+          "file": "apps/sports-client-e2e/src/e2e/app.cy.ts",
+          "hash": "1443522782252200883"
         },
         {
-          "file": "apps/sports-server-e2e/src/support/test-setup.ts",
-          "hash": "10984585515912236441",
-          "deps": [
-            "npm:axios"
-          ]
+          "file": "apps/sports-client-e2e/src/fixtures/example.json",
+          "hash": "11785586596216172004"
         },
         {
-          "file": "apps/sports-server-e2e/tsconfig.json",
-          "hash": "15443990093475294480"
+          "file": "apps/sports-client-e2e/src/support/app.po.ts",
+          "hash": "11157016311132186162"
         },
         {
-          "file": "apps/sports-server-e2e/tsconfig.spec.json",
-          "hash": "14954872453723519891"
+          "file": "apps/sports-client-e2e/src/support/commands.ts",
+          "hash": "5397443931564808659"
+        },
+        {
+          "file": "apps/sports-client-e2e/src/support/e2e.ts",
+          "hash": "1054106023200826784"
+        },
+        {
+          "file": "apps/sports-client-e2e/tsconfig.json",
+          "hash": "10740392072068377465"
         }
       ]
     },
