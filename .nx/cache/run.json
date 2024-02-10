@@ -1,29 +1,29 @@
 {
   "run": {
     "command": "nx run-many --targets=lint",
-    "startTime": "2024-02-06T21:59:49.752Z",
-    "endTime": "2024-02-06T21:59:53.624Z",
+    "startTime": "2024-02-10T21:46:36.244Z",
+    "endTime": "2024-02-10T21:46:40.985Z",
     "inner": false
   },
   "tasks": [
-    {
-      "taskId": "sports-server:lint",
-      "target": "lint",
-      "projectName": "sports-server",
-      "hash": "12194830878201046051",
-      "startTime": "2024-02-06T21:59:49.789Z",
-      "endTime": "2024-02-06T21:59:49.943Z",
-      "params": "",
-      "cacheStatus": "local-cache-hit",
-      "status": 0
-    },
     {
       "taskId": "sports-client-e2e:lint",
       "target": "lint",
       "projectName": "sports-client-e2e",
       "hash": "7259374647338336521",
-      "startTime": "2024-02-06T21:59:49.789Z",
-      "endTime": "2024-02-06T21:59:49.946Z",
+      "startTime": "2024-02-10T21:46:36.272Z",
+      "endTime": "2024-02-10T21:46:36.415Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "sports-server:lint",
+      "target": "lint",
+      "projectName": "sports-server",
+      "hash": "12194830878201046051",
+      "startTime": "2024-02-10T21:46:36.271Z",
+      "endTime": "2024-02-10T21:46:36.418Z",
       "params": "",
       "cacheStatus": "local-cache-hit",
       "status": 0
@@ -33,8 +33,8 @@
       "target": "lint",
       "projectName": "sports-server-e2e",
       "hash": "11279437613129697466",
-      "startTime": "2024-02-06T21:59:49.945Z",
-      "endTime": "2024-02-06T21:59:49.947Z",
+      "startTime": "2024-02-10T21:46:36.417Z",
+      "endTime": "2024-02-10T21:46:36.421Z",
       "params": "",
       "cacheStatus": "local-cache-hit",
       "status": 0
@@ -43,9 +43,9 @@
       "taskId": "sports-client:lint",
       "target": "lint",
       "projectName": "sports-client",
-      "hash": "1967833654722307744",
-      "startTime": "2024-02-06T21:59:49.788Z",
-      "endTime": "2024-02-06T21:59:53.623Z",
+      "hash": "5536142732644818917",
+      "startTime": "2024-02-10T21:46:36.270Z",
+      "endTime": "2024-02-10T21:46:40.984Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
