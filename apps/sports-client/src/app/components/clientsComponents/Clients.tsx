@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { fetchAllClients, removeClient } from '../../../api/clients';
+import { dateFormat } from '../../../utils/dayjs';
 
 export function Clients() {
 	const navigate = useNavigate();
@@ -56,7 +57,7 @@ export function Clients() {
 											<td className="w-1/6 border-t border-x border-[#CAD0D8]">{client.lastName}</td>
 											<td className="w-1/6 border-t border-x border-[#CAD0D8]">{client.email}</td>
 											<td className="w-1/6 border-t border-x border-[#CAD0D8]">{client.clubId}</td>
-											<td className="w-1/6 border-t border-x border-[#CAD0D8]">{client.dateOfBirth.toLocaleString()}</td>
+											<td className="w-1/6 border-t border-x border-[#CAD0D8]">{dateFormat(client.dateOfBirth)}</td>
 											<td>
 												<button type="button" className="button-style relative bg-[#0C42FC] w-10" onClick={handleEditClick(client.id)}>
 													Edit
