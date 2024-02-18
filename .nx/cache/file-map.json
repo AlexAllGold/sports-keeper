@@ -1,0 +1,786 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.1.3",
+  "deps": {
+    "@heroicons/react": "^2.0.18",
+    "@hookform/resolvers": "^3.3.2",
+    "@nrwl/nx-cloud": "^16.0.4",
+    "@nx/jest": "17.1.3",
+    "@redux-devtools/extension": "^3.3.0",
+    "@reduxjs/toolkit": "^2.0.1",
+    "@swc/helpers": "~0.5.2",
+    "@tanstack/react-table": "^8.12.0",
+    "@types/react-redux": "^7.1.33",
+    "axios": "^1.0.0",
+    "class-validator": "^0.14.0",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.2.4",
+    "react": "^18.2.0",
+    "react-datepicker": "^6.1.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.49.2",
+    "react-redux": "^9.0.4",
+    "react-router-dom": "^6.20.1",
+    "react-toastify": "^10.0.0",
+    "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0",
+    "reflect-metadata": "^0.1.13",
+    "tslib": "^2.3.0",
+    "typeorm": "^0.3.20",
+    "winston": "^3.11.0",
+    "winston-mysql": "^1.1.1",
+    "yup": "^1.3.3",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@nx/cypress": "17.1.3",
+    "@nx/eslint": "17.1.3",
+    "@nx/eslint-plugin": "17.1.3",
+    "@nx/express": "^17.1.3",
+    "@nx/js": "17.1.3",
+    "@nx/node": "17.1.3",
+    "@nx/react": "17.1.3",
+    "@nx/vite": "17.1.3",
+    "@nx/webpack": "17.1.3",
+    "@nx/workspace": "17.1.3",
+    "@swc-node/register": "~1.6.7",
+    "@swc/cli": "~0.1.62",
+    "@swc/core": "~1.3.85",
+    "@testing-library/react": "14.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "4.17.13",
+    "@types/jest": "^29.4.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "18.14.2",
+    "@types/react": "18.2.33",
+    "@types/react-datepicker": "^4.19.6",
+    "@types/react-dom": "18.2.14",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "@vitejs/plugin-react": "~4.0.0",
+    "@vitest/coverage-v8": "~0.34.6",
+    "@vitest/ui": "~0.34.6",
+    "autoprefixer": "^10.4.16",
+    "cypress": "^13.0.0",
+    "eslint": "~8.46.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-cypress": "^2.13.4",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "husky": "^8.0.3",
+    "jest": "^29.4.1",
+    "jest-environment-node": "^29.4.1",
+    "jsdom": "~22.1.0",
+    "nx": "17.1.3",
+    "postcss": "^8.4.32",
+    "prettier": "^2.6.2",
+    "tailwindcss": "^3.3.6",
+    "ts-jest": "^29.1.0",
+    "ts-node": "10.9.1",
+    "typescript": "~5.2.2",
+    "vite": "^4.5.2",
+    "vitest": "~0.34.6"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "sports-client": [
+        {
+          "file": "apps/sports-client/.eslintrc.json",
+          "hash": "13321812089268882081"
+        },
+        {
+          "file": "apps/sports-client/index.html",
+          "hash": "3381538791123267474"
+        },
+        {
+          "file": "apps/sports-client/postcss.config.cjs",
+          "hash": "5662248016139079263",
+          "deps": [
+            "npm:path"
+          ]
+        },
+        {
+          "file": "apps/sports-client/project.json",
+          "hash": "9485052757127573546"
+        },
+        {
+          "file": "apps/sports-client/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/sports-client/public/images/logo.png",
+          "hash": "17388444612807005719"
+        },
+        {
+          "file": "apps/sports-client/public/images/minions404.png",
+          "hash": "5685286678841011991"
+        },
+        {
+          "file": "apps/sports-client/src/api/clients.ts",
+          "hash": "5560444336846406190",
+          "deps": [
+            "npm:axios",
+            "npm:@reduxjs/toolkit",
+            "npm:react-toastify"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/api/clubs.ts",
+          "hash": "16683745496953839529",
+          "deps": [
+            "npm:axios",
+            "npm:@reduxjs/toolkit",
+            "npm:react-toastify"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/app.css",
+          "hash": "4055606894390288348"
+        },
+        {
+          "file": "apps/sports-client/src/app/app.spec.tsx",
+          "hash": "16840705466823745751",
+          "deps": [
+            "npm:react",
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/app.tsx",
+          "hash": "4808263674367522244",
+          "deps": [
+            "npm:react",
+            "npm:react-redux"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/Header.tsx",
+          "hash": "7891470881557568961",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/NotFound.tsx",
+          "hash": "4409707984673939990",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/bar/Bar.tsx",
+          "hash": "8053391302355531405",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/clientsComponents/Client.tsx",
+          "hash": "16181322624804931819",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/clientsComponents/Clients.tsx",
+          "hash": "11369591485687821430",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/clubsComponents/Club.tsx",
+          "hash": "13567871585358943677",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/clubsComponents/Clubs.tsx",
+          "hash": "11671838607588442552",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/registrationsForm/ClientsForm.tsx",
+          "hash": "13040410639354225497",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom",
+            "npm:react-hook-form",
+            "npm:react-datepicker"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/registrationsForm/ClubsForm.tsx",
+          "hash": "12988680842282767529",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom",
+            "npm:react-hook-form"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/tanstackTable/ClientTable.tsx",
+          "hash": "12338021321819812408",
+          "deps": [
+            "npm:react",
+            "npm:@tanstack/react-table",
+            "npm:@tanstack/table-core"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/tanstackTable/ClubTable.tsx",
+          "hash": "1571106676541442570",
+          "deps": [
+            "npm:react",
+            "npm:@tanstack/react-table",
+            "npm:@tanstack/table-core"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/tanstackTable/elements/BasicTable.tsx",
+          "hash": "12489820089079596314",
+          "deps": [
+            "npm:react",
+            "npm:@tanstack/react-table",
+            "npm:@tanstack/table-core"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/tanstackTable/elements/DebouncedInput.tsx",
+          "hash": "17003226123488963865",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/components/tanstackTable/elements/SearchIcon.tsx",
+          "hash": "2244174384347089853",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/layouts/Layout.navigation.bar.tsx",
+          "hash": "8068593891381370521",
+          "deps": [
+            "npm:react-router-dom",
+            "npm:react",
+            "npm:react-toastify"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/app/routes/router.tsx",
+          "hash": "1973564746621855961",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/sports-client/src/hooks/redux.ts",
+          "hash": "12861326316123487234",
+          "deps": [
+            "npm:react-redux"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/hooks/useClientForm.ts",
+          "hash": "309000598306735463",
+          "deps": [
+            "npm:yup",
+            "npm:react-hook-form",
+            "npm:@hookform/resolvers"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/hooks/useClub.ts",
+          "hash": "17845964108754981780",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/hooks/useClubForm.ts",
+          "hash": "7539985463251516052",
+          "deps": [
+            "npm:yup",
+            "npm:react-hook-form",
+            "npm:@hookform/resolvers"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/main.tsx",
+          "hash": "8327711436014081605",
+          "deps": [
+            "npm:react-dom",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/models/IClient.ts",
+          "hash": "7698195239323778531"
+        },
+        {
+          "file": "apps/sports-client/src/models/IClub.ts",
+          "hash": "10991080622867128069"
+        },
+        {
+          "file": "apps/sports-client/src/store/reducer/clientsSlice.ts",
+          "hash": "1350614758735366864",
+          "deps": [
+            "npm:@reduxjs/toolkit"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/store/reducer/clubsSlice.ts",
+          "hash": "1329281261969201324",
+          "deps": [
+            "npm:@reduxjs/toolkit"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/store/store.ts",
+          "hash": "13929361958380471085",
+          "deps": [
+            "npm:@reduxjs/toolkit"
+          ]
+        },
+        {
+          "file": "apps/sports-client/src/styles.css",
+          "hash": "14073144218000602386"
+        },
+        {
+          "file": "apps/sports-client/src/utils/dayjs.ts",
+          "hash": "6956523421739985670",
+          "deps": [
+            "npm:dayjs"
+          ]
+        },
+        {
+          "file": "apps/sports-client/tailwind.config.cjs",
+          "hash": "258085004021977942",
+          "deps": [
+            "npm:@nx/react",
+            "npm:path"
+          ]
+        },
+        {
+          "file": "apps/sports-client/tsconfig.app.json",
+          "hash": "7232119452847825095"
+        },
+        {
+          "file": "apps/sports-client/tsconfig.json",
+          "hash": "11166545116916107487"
+        },
+        {
+          "file": "apps/sports-client/tsconfig.spec.json",
+          "hash": "16971201625052508770"
+        },
+        {
+          "file": "apps/sports-client/vite.config.ts",
+          "hash": "18367520600615823132",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
+      "sports-server-e2e": [
+        {
+          "file": "apps/sports-server-e2e/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "apps/sports-server-e2e/jest.config.ts",
+          "hash": "945820069021308128"
+        },
+        {
+          "file": "apps/sports-server-e2e/project.json",
+          "hash": "18144015569256596211"
+        },
+        {
+          "file": "apps/sports-server-e2e/src/sports-server/sports-server.spec.ts",
+          "hash": "4579662685003779048",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/sports-server-e2e/src/support/global-setup.ts",
+          "hash": "9380193982331861381"
+        },
+        {
+          "file": "apps/sports-server-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
+        },
+        {
+          "file": "apps/sports-server-e2e/src/support/test-setup.ts",
+          "hash": "10984585515912236441",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/sports-server-e2e/tsconfig.json",
+          "hash": "15443990093475294480"
+        },
+        {
+          "file": "apps/sports-server-e2e/tsconfig.spec.json",
+          "hash": "14954872453723519891"
+        }
+      ],
+      "sports-client-e2e": [
+        {
+          "file": "apps/sports-client-e2e/.eslintrc.json",
+          "hash": "9199987846761270635"
+        },
+        {
+          "file": "apps/sports-client-e2e/cypress.config.ts",
+          "hash": "5054456290394884373",
+          "deps": [
+            "npm:@nx/cypress",
+            "npm:cypress"
+          ]
+        },
+        {
+          "file": "apps/sports-client-e2e/project.json",
+          "hash": "2658677793126132503"
+        },
+        {
+          "file": "apps/sports-client-e2e/src/e2e/app.cy.ts",
+          "hash": "1443522782252200883"
+        },
+        {
+          "file": "apps/sports-client-e2e/src/fixtures/example.json",
+          "hash": "11785586596216172004"
+        },
+        {
+          "file": "apps/sports-client-e2e/src/support/app.po.ts",
+          "hash": "11157016311132186162"
+        },
+        {
+          "file": "apps/sports-client-e2e/src/support/commands.ts",
+          "hash": "5397443931564808659"
+        },
+        {
+          "file": "apps/sports-client-e2e/src/support/e2e.ts",
+          "hash": "1054106023200826784"
+        },
+        {
+          "file": "apps/sports-client-e2e/tsconfig.json",
+          "hash": "10740392072068377465"
+        }
+      ],
+      "sports-server": [
+        {
+          "file": "apps/sports-server/.eslintrc.json",
+          "hash": "13884975410527229820"
+        },
+        {
+          "file": "apps/sports-server/jest.config.ts",
+          "hash": "6116707754745244067"
+        },
+        {
+          "file": "apps/sports-server/project.json",
+          "hash": "17321368402737424884"
+        },
+        {
+          "file": "apps/sports-server/src/app.ts",
+          "hash": "13190474245283643410",
+          "deps": [
+            "npm:express",
+            "npm:cors"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/sports-server/src/config/configService.ts",
+          "hash": "12487152676731670420",
+          "deps": [
+            "npm:dotenv"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/config/database.ts",
+          "hash": "108328236851321527",
+          "deps": [
+            "npm:typeorm"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/controllers/clientsControllers.ts",
+          "hash": "18178022303785303253",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/controllers/clubsControllers.ts",
+          "hash": "16722179388450459452",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/dtos/createClub.dto.ts",
+          "hash": "18277427507210952044",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/dtos/updateClient.dto.ts",
+          "hash": "3192475559384064686",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/dtos/updateClub.dto.ts",
+          "hash": "15076447362516953138",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/dtos/сreateClient.dto.ts",
+          "hash": "17844789606341426475",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/entities/client.entity.ts",
+          "hash": "1412473979228525092",
+          "deps": [
+            "npm:typeorm"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/entities/club.entity.ts",
+          "hash": "18436171189306788605",
+          "deps": [
+            "npm:typeorm"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/main.ts",
+          "hash": "17565987620967977034"
+        },
+        {
+          "file": "apps/sports-server/src/middlewares/morgan.middleware.ts",
+          "hash": "12331733148413683476",
+          "deps": [
+            "npm:morgan"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/middlewares/validation.middleware.ts",
+          "hash": "3005904335171282399",
+          "deps": [
+            "npm:class-validator",
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/router/routes.ts",
+          "hash": "16190379451942282884",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/services/clientService.ts",
+          "hash": "7652644949301164476",
+          "deps": [
+            "npm:typeorm"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/services/clubService.ts",
+          "hash": "562487090258202512",
+          "deps": [
+            "npm:typeorm"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/utils/errorHandler.ts",
+          "hash": "10329846509818492314",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/utils/exceptions/BadRequestException.ts",
+          "hash": "1073108049328377155"
+        },
+        {
+          "file": "apps/sports-server/src/utils/exceptions/BaseCustomException.ts",
+          "hash": "12305214992901397669"
+        },
+        {
+          "file": "apps/sports-server/src/utils/exceptions/InternalServerException.ts",
+          "hash": "8863896861661758929"
+        },
+        {
+          "file": "apps/sports-server/src/utils/exceptions/NotFoundException.ts",
+          "hash": "10750570668597314987"
+        },
+        {
+          "file": "apps/sports-server/src/utils/httpCodes.ts",
+          "hash": "1445687108677624623"
+        },
+        {
+          "file": "apps/sports-server/src/utils/logger.ts",
+          "hash": "930740449927769627",
+          "deps": [
+            "npm:winston",
+            "npm:winston-mysql"
+          ]
+        },
+        {
+          "file": "apps/sports-server/src/utils/wrapperController.ts",
+          "hash": "10092433724439542830",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/sports-server/tsconfig.app.json",
+          "hash": "6758816428596401805"
+        },
+        {
+          "file": "apps/sports-server/tsconfig.json",
+          "hash": "3490524966360018312"
+        },
+        {
+          "file": "apps/sports-server/tsconfig.spec.json",
+          "hash": "11550347367511341917"
+        },
+        {
+          "file": "apps/sports-server/webpack.config.js",
+          "hash": "3598569380165766830",
+          "deps": [
+            "npm:@nx/webpack"
+          ]
+        }
+      ]
+    },
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "2737171746108015262"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "13481266127867944712"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "2467141345249793548"
+      },
+      {
+        "file": ".husky/commit-msg",
+        "hash": "12857529330704966066"
+      },
+      {
+        "file": ".husky/pre-commit",
+        "hash": "7875791272031423157"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "16448050467312557263"
+      },
+      {
+        "file": ".prettierrc.json",
+        "hash": "12955666547136098019"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "3962880921297918360"
+      },
+      {
+        "file": "README.md",
+        "hash": "17148014561618279817"
+      },
+      {
+        "file": "commitlint.config.cjs",
+        "hash": "14014965562667558644"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "15458064049355999030"
+      },
+      {
+        "file": "jest.preset.cjs",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "migrations/1700654369767-CreateClubs.ts",
+        "hash": "13108734871508656530"
+      },
+      {
+        "file": "migrations/1700656895318-CreateClients.ts",
+        "hash": "1263818587035468342"
+      },
+      {
+        "file": "migrations/1700657666618-CreateLoggers.ts",
+        "hash": "11552241348573157700"
+      },
+      {
+        "file": "nx.json",
+        "hash": "691596363105841985"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "3322897033100878376"
+      },
+      {
+        "file": "package.json",
+        "hash": "335177056873716843"
+      },
+      {
+        "file": "postcss.config.cjs",
+        "hash": "1579725330904862112"
+      },
+      {
+        "file": "tailwind.config.cjs",
+        "hash": "7986470667704694812"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "9599671899571693247"
+      }
+    ]
+  }
+}

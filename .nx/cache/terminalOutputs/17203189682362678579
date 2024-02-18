@@ -1,0 +1,15 @@
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 838 bytes [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+webpack compiled [1m[32msuccessfully[39m[22m (d322895522879680)
+[1m[31mDebugger listening on ws://localhost:9229/bd5d512a-46f7-4068-a417-1c499d120fad[39m[22m
+[1m[31mDebugger listening on ws://localhost:9229/bd5d512a-46f7-4068-a417-1c499d120fad[39m[22m
+[1m[31mFor help, see: https://nodejs.org/en/docs/inspector[39m[22m
+[1m[31m[39m[22m
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+
+[1m[31mERROR[39m[22m in [1m[32mmain[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve 'C:\Users\alexa\WebstormProjects\nx\org\apps\sports-server\src\main.ts' in 'C:\Users\alexa\WebstormProjects\nx\org\apps\sports-server'[39m[22m
+
+[1m[31mERROR[39m[22m in [1munable to locate 'C:/Users/alexa/WebstormProjects/nx/org/apps/sports-server/src/assets/**/*' glob[39m[22m
+
+webpack compiled with [1m[31m2 errors[39m[22m (3e6f64bbb7a24d31)
+[1m[31mBuild failed, waiting for changes to restart...[39m[22m

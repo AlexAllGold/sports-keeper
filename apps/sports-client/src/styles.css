@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  html {
+    width: auto;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+  }
+}
+
+@layer utilities {
+  a {
+    display: flex;
+    position: relative;
+    align-items: center;
+  }
+
+  .p-link-style {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  }
+
+  .link-bar-hover-style {
+    width: 190px;
+  }
+
+  .link-bar-hover-style:hover {
+    background-color: #EBEFFD;
+    border-radius: 10px;
+    color: #3F68FD;
+  }
+
+  .Input-style {
+    margin: auto;
+    height: 2.5rem;
+    width: 100vh;
+    padding-left: 0.5rem;
+    border: #CAD0D8 1px solid;
+    border-radius: 8px;
+    outline-color: #CAD0D8;
+  }
+
+
+  .Input-style:hover {
+    border-color: #3F68FD;
+    background-color: #EBEFFD;
+  }
+
+  .Textarea-style {
+    margin: auto;
+    height: 5rem;
+    width: 100vh;
+    padding-left: 0.5rem;
+    border: #CAD0D8 1px solid;
+    border-radius: 8px;
+    outline-color: #CAD0D8;
+  }
+
+  .Textarea-style:hover {
+    border-color: #3F68FD;
+    background-color: #EBEFFD;
+  }
+
+  .Textarea-style:invalid {
+    border-color: red;
+    background-color: #EBEFFD;
+  }
+
+  .button-style {
+    background-color: #0C42FC;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+  }
+
+  .button-style:hover {
+    background: mediumblue;
+  }
+}

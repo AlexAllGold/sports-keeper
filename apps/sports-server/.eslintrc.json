@@ -1,0 +1,69 @@
+{
+  "extends": [
+    "../../.eslintrc.json",
+    "airbnb-base"
+  ],
+  "ignorePatterns": [
+    "!**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
+      "rules": {
+        "no-unused-vars": "off",
+        "indent": "off",
+        "max-len": "off",
+        "import/prefer-default-export": "off",
+        "import/named": "off",
+        "class-methods-use-this": "off",
+        "import/no-cycle": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off",
+        "linebreak-style": [
+          "error",
+          "windows"
+        ],
+        "object-curly-newline": [
+          "error",
+          {
+            "ObjectExpression": {
+              "multiline": true
+            },
+            "ObjectPattern": {
+              "multiline": true
+            },
+            "ImportDeclaration": {
+              "multiline": true,
+              "minProperties": 7
+            },
+            "ExportDeclaration": "never"
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "rules": {
+        "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/unbound-method": "off",
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/explicit-function-return-type": "error"
+      }
+    },
+    {
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "rules": {}
+    }
+  ]
+}

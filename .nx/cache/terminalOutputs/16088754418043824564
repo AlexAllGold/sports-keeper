@@ -1,0 +1,19 @@
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+
+[1m[31mERROR[39m[22m in [1m[32mmain[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve 'C:\Users\alexa\WebstormProjects\nx\org\apps\sports-server\src\main.ts' in 'C:\Users\alexa\WebstormProjects\nx\org\apps\sports-server'[39m[22m
+
+webpack compiled with [1m[31m1 error[39m[22m (3e6f64bbb7a24d31)
+[1m[31mBuild failed, waiting for changes to restart...[39m[22m
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 27.2 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+webpack compiled [1m[32msuccessfully[39m[22m (320243009281f181)
+[1m[31mDebugger listening on ws://localhost:9229/3150dcdf-b348-451d-88b0-c1142e0471ee[39m[22m
+[1m[31mDebugger listening on ws://localhost:9229/3150dcdf-b348-451d-88b0-c1142e0471ee[39m[22m
+[1m[31mFor help, see: https://nodejs.org/en/docs/inspector[39m[22m
+[1m[31m[39m[22m
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 27.2 KiB [1m[33m[entry][39m[22m
+webpack compiled [1m[32msuccessfully[39m[22m (320243009281f181)
+[1m[31mDebugger listening on ws://localhost:9229/b7022fda-21c0-4e17-a0dc-2ed13e86351d[39m[22m
+[1m[31mDebugger listening on ws://localhost:9229/b7022fda-21c0-4e17-a0dc-2ed13e86351d[39m[22m
+[1m[31mFor help, see: https://nodejs.org/en/docs/inspector[39m[22m
+[1m[31m[39m[22m
