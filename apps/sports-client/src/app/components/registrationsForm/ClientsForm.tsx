@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { SubmitHandler, Controller } from 'react-hook-form';
+import { Controller, SubmitHandler } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import { createClient, fetchClient, updateClient } from '../../../api/clients';
 import { useAppDispatch } from '../../../hooks/redux';
 import { CreateClient } from '../../../models/IClient';
 import { useClientForm } from '../../../hooks/useClientForm';
-
 import 'react-datepicker/dist/react-datepicker.css';
 
 export function ClientsForm() {
@@ -80,7 +79,7 @@ export function ClientsForm() {
 									onChange={(date: Date) => field.onChange(date)}
 									name="dateOfBirth"
 									className="Input-style"
-									dateFormat="dd/MM/yyyy" // Установите нужный формат даты
+									dateFormat="dd/MM/yyyy"
 								/>
 							)}
 							control={control}
